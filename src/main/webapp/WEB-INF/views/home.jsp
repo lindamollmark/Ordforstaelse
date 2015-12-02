@@ -20,7 +20,7 @@
 	</aside>
 	<section>
 		<h1>Välkommen till mattesidan!</h1>
-		<form method="get" action="gameSite/">
+		<form action="gameSite/" method="post">
 		<input type="submit" value="Räkna matte"/>
 		</form>
 	

@@ -27,27 +27,16 @@ public class HomeController {
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
-		Date date = new Date();
-		LocalDate ldate = LocalDate.now();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
+		LocalDate ldate = LocalDate.now();	
+		String formattedDate = ldate.toString();
 		
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "home";
 	}
-	@RequestMapping(value = "/gameSite/", method = RequestMethod.GET)
-	public String gameSite(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
+	@RequestMapping(value = "/gameSite/", method = RequestMethod.POST)
+	public String gameSite() {
 		
-		Date date = new Date();
-		LocalDate ldate = LocalDate.now();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
 		
 		return "gameSite";
 	}
