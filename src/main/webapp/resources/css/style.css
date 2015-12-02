@@ -1,0 +1,33 @@
+body, html {
+	margin-top: 100px;
+	height: 100%;
+}
+
+body {
+	margin-bottom: 300px;
+}
+
+section {
+    width:800px;
+    float:none;
+    margin-left: 20%;
+    padding:10px; 
+    text-align: center;
+}
+
+h1 {
+	margin: 10px;
+}
+#left{
+	height: auto;
+	width: 150px;
+	float: left;
+	margin-left: 3.5%;
+}
+
+#right {
+	height: auto;
+	width: 150px;
+	float: right;
+	margin-right: 13.5%;
+}

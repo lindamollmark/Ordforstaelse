@@ -1,14 +1,30 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page session="false"%>
 <html>
+
 <head>
-	<title>Start</title>
+<link rel="stylesheet" href="resources/css/normalize.css">
+<link rel="stylesheet" href="resources/css/style.css">
+<title>Start</title>
 </head>
 <body>
-<h1>
-	Välkommen till mattesidan! 
-</h1>
-
-<P>  The time on the server is ${serverTime}. </P>
+<aside id="left">
+		<div>
+			<img  src="resources/images/sideNumbers.jpg">
+		</div>
+	</aside>
+	<aside id="right">
+		 <div>
+			<img  src="resources/images/sideNumbers.jpg">
+		</div> 
+	</aside>
+	<section>
+		<h1>Välkommen till mattesidan!</h1>
+		<form method="get" action="gameSite/">
+		<input type="submit" value="Räkna matte"/>
+		</form>
+	
+	<P>The time on the server is ${serverTime}.</P>
+	</section>
 </body>
 </html>
