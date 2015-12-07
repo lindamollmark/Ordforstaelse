@@ -1,8 +1,6 @@
 package com.mathhelper.math;
 
-import java.text.DateFormat;
-import java.time.LocalDate;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -27,14 +25,14 @@ public class HomeController {
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
-		LocalDate ldate = LocalDate.now();	
+		LocalDateTime ldate = LocalDateTime.now();	
 		String formattedDate = ldate.toString();
 		
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "home";
 	}
-	@RequestMapping(value = "/gameSite/", method = RequestMethod.POST)
+	@RequestMapping(value = "/gameSite", method = RequestMethod.POST)
 	public String gameSite() {
 		
 		

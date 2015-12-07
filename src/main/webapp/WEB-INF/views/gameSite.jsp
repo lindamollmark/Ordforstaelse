@@ -34,7 +34,9 @@
 					ALT="SUBMIT!" name="tableNumber" value="five"> 
 			</form>
 		</div>
-	<!-- 	<div id="toCount">${tableNumberToCount}</div>  -->
+	<div id="toCount">
+	<h1>${toCount}</h1>
+	</div>  
 	</section>
 </body>
 </html>
