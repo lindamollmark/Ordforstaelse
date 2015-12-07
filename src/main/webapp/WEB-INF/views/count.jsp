@@ -21,7 +21,7 @@
 	<section>
 		<h1>Nu ska vi räkna matte</h1>
 		<div>
-			<form action="count" method="post">
+			<form action="count/" method="post">
 				<INPUT TYPE="image" SRC="../resources/images/ett.jpg" id="numbers"
 					ALT="SUBMIT!" name="tableNumber" value="one"> 
 				<INPUT TYPE="image" SRC="../resources/images/2.jpg" id="numbers"

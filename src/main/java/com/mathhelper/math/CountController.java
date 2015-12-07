@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("gameSite")
 public class CountController {
 	
-	@RequestMapping(value="/count/", method=RequestMethod.POST)
+	@RequestMapping(value="/count", method=RequestMethod.POST)
 	public String chooseNumber(@RequestParam(required=true, value="tableNumber") String tabelNumber, Model model){
 		System.out.println(tabelNumber);
 
 		String toCount = "1x5";
 		model.addAttribute("toCount", toCount);
-		return "gameSite";
+		return "count";
 	}
 //	@RequestMapping(value="/count/", method=RequestMethod.GET)
 //	public String chooseNumber(Model model){
