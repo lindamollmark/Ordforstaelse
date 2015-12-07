@@ -9,7 +9,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 public class CountControllerTest {
 
-	private CountController countController = new CountController();
+	private ChartController countController = new ChartController();
 	
 	@Test
 	public void shouldReturnChoosenNumber() throws Exception {

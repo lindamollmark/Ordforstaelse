@@ -32,7 +32,7 @@ public class Count {
 	}
 
 	public String numberToCount() {
-		String numberToCount = chartNumber + " * " + (int) (Math.random()) + " = ";
+		String numberToCount = chartNumber + " * " + (int) (Math.random()*11) + " = ";
 		return numberToCount;
 	}
 

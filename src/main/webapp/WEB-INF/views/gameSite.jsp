@@ -23,15 +23,15 @@
 		<div>
 			<form action="count" method="post">
 				<INPUT TYPE="image" SRC="../resources/images/ett.jpg" id="numbers"
-					ALT="SUBMIT!" name="tableNumber" value="one"> 
+					ALT="SUBMIT!" name="tableNumber" value="1"> 
 				<INPUT TYPE="image" SRC="../resources/images/2.jpg" id="numbers"
-					ALT="SUBMIT!" name="tableNumber" value="two"> 
+					ALT="SUBMIT!" name="tableNumber" value="2"> 
 				<INPUT TYPE="image" SRC="../resources/images/3.jpg" id="numbers"
-					ALT="SUBMIT!" name="tableNumber" value="three"> 
+					ALT="SUBMIT!" name="tableNumber" value="3"> 
 				<INPUT TYPE="image" SRC="../resources/images/4.jpg" id="numbers"
-					ALT="SUBMIT!" name="tableNumber" value="four"> 
+					ALT="SUBMIT!" name="tableNumber" value="4"> 
 				<INPUT TYPE="image" SRC="../resources/images/5.jpg" id="numbers"
-					ALT="SUBMIT!" name="tableNumber" value="five"> 
+					ALT="SUBMIT!" name="tableNumber" value="5"> 
 			</form>
 		</div>
 	</section>
