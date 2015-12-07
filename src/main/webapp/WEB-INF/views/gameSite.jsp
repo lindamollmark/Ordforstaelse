@@ -19,7 +19,7 @@
 		</div>
 	</aside>
 	<section>
-		<h1>Nu ska vi räkna matte</h1>
+		<h1>Viken mattetabell vill du öva på?</h1>
 		<div>
 			<form action="count" method="post">
 				<INPUT TYPE="image" SRC="../resources/images/ett.jpg" id="numbers"
@@ -34,9 +34,6 @@
 					ALT="SUBMIT!" name="tableNumber" value="five"> 
 			</form>
 		</div>
-	<div id="toCount">
-	<h1>${toCount}</h1>
-	</div>  
 	</section>
 </body>
 </html>
