@@ -6,6 +6,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import com.mathhelper.math.controller.ChartController;
+
 @RunWith(MockitoJUnitRunner.class)
 public class CountControllerTest {
 

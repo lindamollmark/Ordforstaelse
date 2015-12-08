@@ -24,7 +24,16 @@
 	<div id="toCount">
 	<h1>${toCount}</h1>
 	</div>  
-	<div><input name="answer"></div>
+	<div>
+		<form action="submit" method="post">
+			<input name="answer">
+			<input type="submit" value="Rätta">
+			<br>
+			<h2>${resultAnswer}</h2>
+			<h2>${noOfTrials}</h2>
+		</form>
+	</div>
+	
 	</section>
 </body>
 </html>

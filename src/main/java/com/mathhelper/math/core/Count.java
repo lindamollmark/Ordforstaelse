@@ -1,10 +1,11 @@
-package com.mathhelper.math;
+package com.mathhelper.math.core;
 
 
 public class Count {
 	
 	private int chartNumber;
 	private int numberOfTrials;
+	private int randomNumber;
 	
 	public Count(int chartNumber) {
 		this.chartNumber = chartNumber;
@@ -14,25 +15,18 @@ public class Count {
 		return chartNumber;
 	}
 	
-//	public int randomNumber(){
-//		int random = (int) (Math.random()*11);
-//		return random;
-//	}
-
 	public int calculateAnswer() {
-		int randomNumber = (int) (Math.random());
 		int answer = chartNumber * randomNumber;
-		
 		return answer;
 	}
 
 	public void setChartNumber(int chartNumber) {
 		this.chartNumber = chartNumber;
-		
 	}
 
 	public String numberToCount() {
-		String numberToCount = chartNumber + " * " + (int) (Math.random()*11) + " = ";
+		randomNumber = (int) (Math.random()*11);
+		String numberToCount = chartNumber + " * " + randomNumber + " = ";
 		return numberToCount;
 	}
 

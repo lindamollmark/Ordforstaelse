@@ -1,4 +1,4 @@
-package com.mathhelper.math;
+package com.mathhelper.math.controller;
 
 import java.time.LocalDateTime;
 import java.util.Locale;
