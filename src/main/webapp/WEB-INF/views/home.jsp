@@ -22,9 +22,15 @@
 	<section>
 		<h1>Välkommen till mattesidan!</h1>
 		<form action="gameSite/" method="post">
+		<label>Vem ska räkna? </label>
+		<input type="text" name="name">
+		<br>
+		<br>
 		<input type="submit" value="Räkna matte"/>
 		</form>
-	
+		<br>
+		<br>
+		<br>
 	<P>The time on the server is ${serverTime}.</P>
 	</section>
 </body>

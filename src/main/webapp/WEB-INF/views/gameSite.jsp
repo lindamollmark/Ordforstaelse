@@ -19,7 +19,7 @@
 		</div>
 	</aside>
 	<section>
-		<h1>Viken mattetabell vill du öva på?</h1>
+		<h1>Viken mattetabell vill du öva på ${playerName}?</h1>
 		<div>
 			<form action="count" method="post">
 				<INPUT TYPE="image" SRC="../resources/images/ett.jpg" id="numbers"

@@ -20,14 +20,16 @@
 	</aside>
 	<section>
 		<h1>Nu ska vi räkna matte</h1>
+		<br>
+		<br>
 		
 	<div id="toCount">
 	<h1>${toCount}</h1>
 	</div>  
 	<div>
-		<form action="submit" method="post">
-			<input name="answer">
-			<input type="submit" value="Rätta">
+		<form action="submit" method="post" id="submitAnswer">
+			<input name="answer" id="answerSubmit">
+			<input type="submit" value="Rätta" >
 			<br>
 			<h2>${resultAnswer}</h2>
 			<h2>${noOfTrials}</h2>
@@ -35,5 +37,6 @@
 	</div>
 	
 	</section>
+	<script type="text/javascript"> document.submitAnswer.answerSubmit.focus();</script>
 </body>
 </html>
