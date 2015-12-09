@@ -12,22 +12,24 @@ import org.powermock.modules.junit4.PowerMockRunner;
 
 import com.mathhelper.math.core.Count;
 
-//@RunWith(MockitoJUnitRunner.class)
 @RunWith(PowerMockRunner.class)
 @PrepareForTest ({Count.class})
 public class CountTest {
 	
 	private Count countClass;
 	private int chartToCount = 3;
-	private int randomNumber = 5;
+	private double randomNumber = 0.5;
+	private int randomNumberToCount = (int)(randomNumber*11);
+	private String numberToCount;
 	
 	@Before
 	public void before(){
 		countClass = new Count(chartToCount);
 		// Mocking Math.random()
 		PowerMock.mockStatic(Math.class);
-		EasyMock.expect((int) Math.random()).andReturn(randomNumber).anyTimes();
+		EasyMock.expect((Math.random()*11)).andReturn(randomNumber).anyTimes();
 		PowerMock.replay(Math.class);
+		numberToCount = countClass.numberToCount();
 	}
 	@Test
 	public void shouldReturnChartNumber() throws Exception {
@@ -38,21 +40,19 @@ public class CountTest {
 	
 	@Test
 	public void shouldReturnNumberToCount() throws Exception {
-		String numberToCount = countClass.numberToCount();
-		assertEquals(chartToCount + " * " + randomNumber + " = " , numberToCount);
+		assertEquals(chartToCount + " * " + randomNumberToCount + " = " , numberToCount);
 	}
 	
 	@Test
-	public void shouldCalculateTheAnswer() throws Exception {		
-		
+	public void shouldCalculateTheAnswer() throws Exception {	
 		int answer = countClass.calculateAnswer();
 		
-		assertEquals(chartToCount*randomNumber, answer);
+		assertEquals((chartToCount*randomNumberToCount), answer);
 	}
 
 	@Test
 	public void shouldCompareAnswer_correctAnswer() throws Exception {
-		int answer = 15;
+		int answer = chartToCount*randomNumberToCount;
 		 Boolean result = countClass.correctAnswer(answer);
 		 
 		 assertTrue(result);
