@@ -1,7 +1,5 @@
 package com.mathhelper.math;
 
-import static org.mockito.Mockito.verify;
-
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,7 +8,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.ui.Model;
 
 import com.mathhelper.math.controller.HomeController;
-import com.mathhelper.math.core.Player;
+import com.mathhelper.math.core.model.Player;
 
 @RunWith(MockitoJUnitRunner.class)
 public class HomeControllerTest {
@@ -22,11 +20,9 @@ public class HomeControllerTest {
 	@Ignore
 	public void shouldsavePlayerName() throws Exception {
 		homeController = new HomeController();
-		Model model;
 		
 		 homeController.gameSite("Arne", null);
 		
-		verify(player).setPlayer("Arne");
 		
 	}
 	

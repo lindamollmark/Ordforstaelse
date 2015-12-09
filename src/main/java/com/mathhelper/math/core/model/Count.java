@@ -1,4 +1,4 @@
-package com.mathhelper.math.core;
+package com.mathhelper.math.core.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +7,8 @@ public class Count {
 	
 	private int chartNumber;
 	private int numberOfTrials;
+	private int numberOfCorrectAnswers;
+	
 	private int randomNumber;
 	private List<Integer> correctAnswerCount;
 	private List<Integer> numberToCountList;
@@ -27,6 +29,10 @@ public class Count {
 		
 	public List<Integer> getCorrectAnswerCount() {
 		return correctAnswerCount;
+	}
+
+	public int getNumberOfCorrectAnswers() {
+		return numberOfCorrectAnswers;
 	}
 
 	public int calculateAnswer() {
@@ -57,6 +63,7 @@ public class Count {
 		numberOfTrials++;
 		if(calculateAnswer()==answer){
 			int numberOfTimes = correctAnswerCount.get(randomNumber);
+			numberOfCorrectAnswers++;
 			correctAnswerCount.set(randomNumber, numberOfTimes+1);
 			if (numberOfTimes >= 2) {
 				for (int i = 0; i < numberToCountList.size(); i++) {

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.mathhelper.math.core.Player;
+import com.mathhelper.math.core.model.Player;
 
 /**
  * Handles requests for the application home page.
@@ -18,7 +18,7 @@ import com.mathhelper.math.core.Player;
 @Controller
 public class HomeController {
 	
-	@Autowired private Player player;
+	private Player player;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {		
@@ -32,7 +32,7 @@ public class HomeController {
 	@RequestMapping(value = "/gameSite", method = RequestMethod.POST)
 	public String gameSite(@RequestParam(value="name") String name, Model model) {
 		
-		player.setPlayer(name);
+		player = new Player(name);
 		 model.addAttribute("playerName", name);
 		return "gameSite";
 	}

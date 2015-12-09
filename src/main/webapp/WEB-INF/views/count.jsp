@@ -6,6 +6,24 @@
 <link rel="stylesheet" href="../resources/css/normalize.css">
 <link rel="stylesheet" href="../resources/css/style.css">
 <title>Spelsida</title>
+<script type="text/javascript">
+
+ var numbersOnly = /^\d+$/;
+ function testInputData(myfield, restrictionType) {
+
+	  var myData = document.getElementById(myfield).value;
+	  if(myData!==''){
+	   if(restrictionType.test(myData)){
+	   }else{
+	    alert('Your data input is invalid!');
+	   }
+	  }else{
+	   alert('Please enter data!');
+	  }
+	  return;
+	    
+	 }
+	 </script>
 </head>
 <body>
 	<aside id="left">
@@ -27,12 +45,15 @@
 	<h1>${toCount}</h1>
 	</div>  
 	<div>
-		<form action="submit" method="post" id="submitAnswer">
-			<input name="answer" id="answerSubmit">
+		<form action="submit" method="post" id="submitAnswer" onSubmit="return testInputData('answerSubmit',numbersOnly);">
+			<input type="number" name="answer" id="answerSubmit">
 			<input type="submit" value="Rätta" >
 			<br>
 			<h2>${resultAnswer}</h2>
+			Antal försök:
 			<h2>${noOfTrials}</h2>
+			Antal rätt:
+			<h2>${noOfCorrectAnswers}</h2>
 		</form>
 	</div>
 	

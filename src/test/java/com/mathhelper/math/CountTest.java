@@ -10,7 +10,7 @@ import org.powermock.api.easymock.PowerMock;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
-import com.mathhelper.math.core.Count;
+import com.mathhelper.math.core.model.Count;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest ({Count.class})
