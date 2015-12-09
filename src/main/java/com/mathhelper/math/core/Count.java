@@ -9,15 +9,15 @@ public class Count {
 	private int numberOfTrials;
 	private int randomNumber;
 	private List<Integer> correctAnswerCount;
-	private List<Integer> numberToCount;
+	private List<Integer> numberToCountList;
 	
 	public Count(int chartNumber) {
 		this.chartNumber = chartNumber;
 		correctAnswerCount = new ArrayList<>();
-		numberToCount = new ArrayList<>();
+		numberToCountList = new ArrayList<>();
 		for (int i = 0; i < 11; i++) {
 			correctAnswerCount.add(0);
-			numberToCount.add(i);	
+			numberToCountList.add(i);	
 		}
 	}
 
@@ -39,7 +39,12 @@ public class Count {
 	}
 
 	public String numberToCount() {
-		randomNumber = (int) (Math.random()*numberToCount.size());
+		if (numberToCountList.isEmpty()) {
+			return "Du är klar med hela " + chartNumber +" :ans tabell! Bra jobbat!";
+			
+		}
+		randomNumber = (int) (Math.random()*numberToCountList.size());
+		randomNumber = numberToCountList.get(randomNumber);
 		int numberOfCorrectAnswer = correctAnswerCount.get(randomNumber);
 		if(numberOfCorrectAnswer == 3){
 			randomNumber = (randomNumber+1);
@@ -53,15 +58,12 @@ public class Count {
 		if(calculateAnswer()==answer){
 			int numberOfTimes = correctAnswerCount.get(randomNumber);
 			correctAnswerCount.set(randomNumber, numberOfTimes+1);
-			if (numberOfTimes <= 2) {
-				for (int i = 0; i < numberToCount.size(); i++) {
-					if(numberToCount.get(i)== randomNumber){
-						numberToCount.remove(i);
+			if (numberOfTimes >= 2) {
+				for (int i = 0; i < numberToCountList.size(); i++) {
+					if(numberToCountList.get(i)== randomNumber){
+						numberToCountList.remove(i);
 					}
-					
 				}
-				
-				
 			}
 			return true;
 		}
