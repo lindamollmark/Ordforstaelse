@@ -17,24 +17,24 @@ import com.mathhelper.math.core.model.Player;
  */
 @Controller
 public class HomeController {
-	
+
 	private Player player;
-	
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {		
 		LocalDateTime ldate = LocalDateTime.now();	
 		String formattedDate = ldate.toString();
-		
+
 		model.addAttribute("serverTime", formattedDate );
-		
+
 		return "home";
 	}
 	@RequestMapping(value = "/gameSite", method = RequestMethod.POST)
 	public String gameSite(@RequestParam(value="name") String name, Model model) {
-		
+
 		player = new Player(name);
-		 model.addAttribute("playerName", name);
+		model.addAttribute("playerName", name);
 		return "gameSite";
 	}
-	
+
 }

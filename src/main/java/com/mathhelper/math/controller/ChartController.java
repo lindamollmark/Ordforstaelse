@@ -47,11 +47,5 @@ public class ChartController {
 		return "count";
 		}
 	}
-	//	@RequestMapping(value="/count/", method=RequestMethod.GET)
-	//	public String chooseNumber(Model model){
-	//		System.out.println("kommer in i getMethoden");
-	//		String toCount = "1x5";
-	//		model.addAttribute("toCount", toCount);
-	//		return "gameSite";
-	//	}
+	
 }
