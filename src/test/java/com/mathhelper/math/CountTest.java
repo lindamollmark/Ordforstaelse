@@ -15,13 +15,13 @@ import com.mathhelper.math.core.model.Count;
 @RunWith(PowerMockRunner.class)
 @PrepareForTest ({Count.class})
 public class CountTest {
-	
+
 	private Count countClass;
 	private int chartToCount = 3;
 	private double randomNumber = 0.5;
 	private int randomNumberToCount = (int)(randomNumber*11);
 	private String numberToCount;
-	
+
 	@Before
 	public void before(){
 		countClass = new Count(chartToCount);
@@ -34,45 +34,50 @@ public class CountTest {
 	@Test
 	public void shouldReturnChartNumber() throws Exception {
 		int number = countClass.getChartNumber();
-		
+
 		assertEquals(chartToCount, number);
 	}
-	
+
 	@Test
 	public void shouldReturnNumberToCount() throws Exception {
 		assertEquals(chartToCount + " * " + randomNumberToCount + " = " , numberToCount);
 	}
-	
+
 	@Test
 	public void shouldCalculateTheAnswer() throws Exception {	
 		int answer = countClass.calculateAnswer();
-		
+
 		assertEquals((chartToCount*randomNumberToCount), answer);
 	}
 
 	@Test
 	public void shouldCompareAnswer_correctAnswer() throws Exception {
 		int answer = chartToCount*randomNumberToCount;
-		 Boolean result = countClass.correctAnswer(answer);
-		 
-		 assertTrue(result);
+
+		Boolean result = countClass.correctAnswer(answer);
+
+		assertTrue(result);
 	}
+	
 	@Test
 	public void shouldCompareAnswer_wrongAnswer() throws Exception {
 		int answer = 98;
-		 Boolean result = countClass.correctAnswer(answer);
-		 
-		 assertFalse(result);
+		
+		Boolean result = countClass.correctAnswer(answer);
+
+		assertFalse(result);
 	}
+	
 	@Test
 	public void shouldCountNumberOfTrials() throws Exception {
 		int answer = 98;
-		 countClass.correctAnswer(answer);
-		 countClass.correctAnswer(answer);
-		 countClass.correctAnswer(answer);
-		 countClass.correctAnswer(answer);
-		 int numberOfTrials = countClass.getNumberOfTrials();
-		 
-		 assertEquals(4, numberOfTrials);
+		countClass.correctAnswer(answer);
+		countClass.correctAnswer(answer);
+		countClass.correctAnswer(answer);
+		countClass.correctAnswer(answer);
+		
+		int numberOfTrials = countClass.getNumberOfTrials();
+
+		assertEquals(4, numberOfTrials);
 	}
 }

@@ -44,7 +44,7 @@ public class CountTest_numberToCount {
 	}
 	
 	@Test
-	public void shouldNotGiveNumberToCountWhenTheCorrectAnswerdIsGivenThreeTimes() throws Exception {
+	public void shouldGiveNewNumberToCountWhenTheCorrectAnswerdIsGivenThreeTimes() throws Exception {
 		countClass.correctAnswer(15);
 		countClass.correctAnswer(15);
 		countClass.correctAnswer(15);
@@ -52,6 +52,5 @@ public class CountTest_numberToCount {
 		String returned = countClass.numberToCount();
 		
 		assertEquals(numberToCount, returned);
-//		assertFalse(numberToCount.equalsIgnoreCase(returned));
 	}
 }

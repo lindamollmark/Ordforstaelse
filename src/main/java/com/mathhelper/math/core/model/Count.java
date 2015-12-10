@@ -47,16 +47,15 @@ public class Count {
 	public String numberToCount() {
 		if (numberToCountList.isEmpty()) {
 			return "Du är klar med hela " + chartNumber +" :ans tabell! Bra jobbat!";
-			
 		}
-		randomNumber = (int) (Math.random()*numberToCountList.size());
-		randomNumber = numberToCountList.get(randomNumber);
-		int numberOfCorrectAnswer = correctAnswerCount.get(randomNumber);
-		if(numberOfCorrectAnswer == 3){
-			randomNumber = (randomNumber+1);
-		}
+		randomNumber();
 		String numberToCount = chartNumber + " * " + randomNumber + " = ";
 		return numberToCount;
+	}
+
+	private void randomNumber() {
+		randomNumber = (int) (Math.random()*numberToCountList.size());
+		randomNumber = numberToCountList.get(randomNumber);
 	}
 
 	public Boolean correctAnswer(int answer) {
@@ -79,8 +78,5 @@ public class Count {
 
 	public int getNumberOfTrials() {
 		return numberOfTrials;
-	}
-	
-
-		
+	}		
 }
