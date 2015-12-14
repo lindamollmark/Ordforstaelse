@@ -13,6 +13,7 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 import com.mathhelper.math.core.model.Count;
+import com.mathhelper.math.core.model.Player;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest ({Count.class})
@@ -24,10 +25,11 @@ public class CountTest_correctAnswerCount {
 	private double randomNumber = 0.5;
 	private int randomNumberToCount = (int)(randomNumber*11);
 	private String numberToCount;
+	private Player player = new Player("Roger");
 	
 	@Before
 	public void before(){
-		countClass = new Count(chartToCount);
+		countClass = new Count(chartToCount, player);
 		// Mocking Math.random()
 		PowerMock.mockStatic(Math.class);
 		EasyMock.expect((Math.random()*11)).andReturn(randomNumber).anyTimes();

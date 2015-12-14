@@ -21,7 +21,7 @@
 	<section>
 		<h1>Viken mattetabell vill du öva på ${playerName}?</h1>
 		<div>
-			<form action="count" method="post">
+			<form action="count" method="post" value=${playerName}>
 				<INPUT TYPE="image" SRC="../resources/images/ett.jpg" id="numbers"
 					ALT="SUBMIT!" name="tableNumber" value="1"> 
 				<INPUT TYPE="image" SRC="../resources/images/2.jpg" id="numbers"

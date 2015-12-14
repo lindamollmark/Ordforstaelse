@@ -2,11 +2,13 @@ package com.mathhelper.math.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mathhelper.math.core.model.Count;
+import com.mathhelper.math.core.model.Player;
 
 @Controller
 @RequestMapping("gameSite")
@@ -15,9 +17,10 @@ public class ChartController {
 	private Count count;
 
 	@RequestMapping(value="/count", method=RequestMethod.POST)
-	public String chooseNumber(@RequestParam(required=true, value="tableNumber") String tabelNumber, Model model){
+	public String chooseNumber(@RequestParam(required=true, value="tableNumber") String tabelNumber, @ModelAttribute("player") Player player, Model model){
 		int chartNumber = Integer.parseInt(tabelNumber);
-		count = new Count(chartNumber);
+		Player players = player;
+		count = new Count(chartNumber, players);
 		String toCount = count.numberToCount();
 		model.addAttribute("toCount", toCount);
 		return "count";

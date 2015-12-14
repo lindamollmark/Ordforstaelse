@@ -33,6 +33,7 @@ public class HomeController {
 	public String gameSite(@RequestParam(value="name") String name, Model model) {
 
 		player = new Player(name);
+		model.addAttribute(player);
 		model.addAttribute("playerName", name);
 		return "gameSite";
 	}

@@ -8,13 +8,15 @@ public class Count {
 	private int chartNumber;
 	private int numberOfTrials;
 	private int numberOfCorrectAnswers;
+	private Player player;
 	
 	private int randomNumber;
 	private List<Integer> correctAnswerCount;
 	private List<Integer> numberToCountList;
 	
-	public Count(int chartNumber) {
+	public Count(int chartNumber, Player player) {
 		this.chartNumber = chartNumber;
+		this.player = player;
 		correctAnswerCount = new ArrayList<>();
 		numberToCountList = new ArrayList<>();
 		for (int i = 0; i < 11; i++) {
@@ -46,7 +48,7 @@ public class Count {
 
 	public String numberToCount() {
 		if (numberToCountList.isEmpty()) {
-			return "Du är klar med hela " + chartNumber +" :ans tabell! Bra jobbat!";
+			return player.getName() + " du är klar med hela " + chartNumber +" :ans tabell! Bra jobbat!";
 		}
 		randomNumber();
 		String numberToCount = chartNumber + " * " + randomNumber + " = ";

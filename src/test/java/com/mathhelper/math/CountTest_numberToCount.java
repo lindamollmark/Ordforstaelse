@@ -2,7 +2,11 @@ package com.mathhelper.math;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.easymock.EasyMock;
+import org.easymock.IAnswer;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +16,7 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 import com.mathhelper.math.core.model.Count;
+import com.mathhelper.math.core.model.Player;
 
 
 @RunWith(PowerMockRunner.class)
@@ -22,11 +27,12 @@ public class CountTest_numberToCount {
 	private int chartToCount = 3;
 	private double randomNumber = 0.5;
 	private int randomNumberToCount = (int)(randomNumber*11);
+	private Player player = new Player("Sigrid");
 	
 	
 	@Before
 	public void before(){
-		countClass = new Count(chartToCount);
+		countClass = new Count(chartToCount, player);
 		// Mocking Math.random()
 		PowerMock.mockStatic(Math.class);
 		EasyMock.expect((Math.random()*11)).andReturn(randomNumber).anyTimes();
