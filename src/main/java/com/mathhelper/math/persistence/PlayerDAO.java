@@ -1,4 +1,4 @@
-package com.mathhelper.math;
+package com.mathhelper.math.persistence;
 
 import com.mathhelper.math.core.model.Player;
 

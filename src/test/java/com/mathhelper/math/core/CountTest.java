@@ -1,4 +1,4 @@
-package com.mathhelper.math;
+package com.mathhelper.math.core;
 
 import static org.junit.Assert.*;
 

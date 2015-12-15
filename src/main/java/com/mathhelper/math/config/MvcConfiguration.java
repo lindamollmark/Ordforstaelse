@@ -12,8 +12,8 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import com.mathhelper.math.PlayerDAO;
-import com.mathhelper.math.PlayerDAOImpl;
+import com.mathhelper.math.persistence.PlayerDAO;
+import com.mathhelper.math.persistence.PlayerDAOImpl;
 
  
 @Configuration
@@ -48,5 +48,20 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
     @Bean
     public PlayerDAO getPlayerDAO() {
         return new PlayerDAOImpl(getDataSource());
+    }
+    @Bean
+    public DataSource getTestDataSource() {
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/theMathHelperTest");
+        dataSource.setUsername("root");
+        dataSource.setPassword("linda");
+         
+        return dataSource;
+    }
+     
+    @Bean
+    public PlayerDAO getTestPlayerDAO() {
+        return new PlayerDAOImpl(getTestDataSource());
     }
 }

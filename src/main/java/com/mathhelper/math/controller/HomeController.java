@@ -6,14 +6,14 @@ import java.util.Locale;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.mathhelper.math.PlayerDAO;
 import com.mathhelper.math.core.model.Player;
+import com.mathhelper.math.core.service.PlayerService;
+import com.mathhelper.math.persistence.PlayerDAO;
 
 /**
  * Handles requests for the application home page.
@@ -24,8 +24,7 @@ public class HomeController {
 	private Player player;
 
 	@Autowired
-	@Qualifier("getPlayerDAO")
-	private PlayerDAO dao;
+	private PlayerService service;
 	
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -41,7 +40,7 @@ public class HomeController {
 	public String gameSite(@RequestParam(value="name") String name, Model model) {
 
 		player = new Player(name);
-		dao.addPlayer(player);
+		service.addPlayer(player);
 		model.addAttribute(player);
 		model.addAttribute("playerName", name);
 		return "gameSite";

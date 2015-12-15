@@ -1,4 +1,4 @@
-package com.mathhelper.math;
+package com.mathhelper.math.controller;
 
 import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
