@@ -1,6 +1,6 @@
 package com.mathhelper.math.persistence;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -16,24 +16,44 @@ import com.mathhelper.math.persistence.PlayerDAO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration({ "file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml"})
+@ContextConfiguration({"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml"})
 public class PlayerDAOTest {
 	
 	@Autowired
 	@Qualifier("getTestPlayerDAO")
 	private PlayerDAO playerDAO;
 	
+	private Player player;
+	
 	@Before
 	public void before(){
+		player = new Player("Fred");
 	}		
 	
 	@Test
-	public void shouldReturnPlayer() throws Exception {
-		Player player = new Player("Fred");
-		
+	public void shouldAddAndReturnPlayer() throws Exception {		
 		playerDAO.addPlayer(player);
-		Player returned = playerDAO.getPlayer("Fred");
+		Player returned = getPlayer(player.getName());
 		
 		assertEquals(player.getName(), returned.getName());
+	}
+
+	private Player getPlayer(String name) {
+		return playerDAO.getPlayer(name);
+	}
+	
+	@Test
+	public void shouldUpdatePlayer() throws Exception {
+
+		playerDAO.addPlayer(player);
+		Player returned = getPlayer(player.getName());
+		returned.setName("Fredag");
+		playerDAO.updatePlayer(returned);
+		
+		Player updated = getPlayer(returned.getName());
+		
+		assertEquals(returned.getId(), updated.getId());
+		assertEquals(returned.getName(), updated.getName());
+		
 	}
 }

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import com.mathhelper.math.core.model.Player;
 
-import java.lang.management.PlatformLoggingMXBean;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -31,8 +30,8 @@ public class PlayerDAOImpl implements PlayerDAO {
 	}
 
 	@Override
-	public Player getPlayer(String string) {
-		String sql ="SELECT * FROM player WHERE name = '" + string + "'";
+	public Player getPlayer(String name) {
+		String sql ="SELECT * FROM player WHERE name = '" + name + "'";
 		Player thePlayer = jdbcTemplate.query(sql, new ResultSetExtractor<Player>() {
 			 
 	        @Override
@@ -40,6 +39,7 @@ public class PlayerDAOImpl implements PlayerDAO {
 	                DataAccessException {
 	            if (rs.next()) {
 	            	Player player = new Player(rs.getString("name"));
+	            	player.setId(rs.getInt("id"));
 	                return player;
 	            }
 	 
@@ -50,6 +50,12 @@ public class PlayerDAOImpl implements PlayerDAO {
 	    });
 	
 		return thePlayer;
+	}
+
+	@Override
+	public void updatePlayer(Player player) {
+		String sql = "UPDATE player SET name=? where id=?";
+		jdbcTemplate.update(sql, player.getName(), player.getId());
 	}
 
 }
