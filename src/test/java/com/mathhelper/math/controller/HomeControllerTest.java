@@ -1,21 +1,26 @@
 package com.mathhelper.math.controller;
 
-import static org.mockito.Mockito.*;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.when;
+
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Matchers;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.ui.Model;
 
-import com.mathhelper.math.controller.HomeController;
 import com.mathhelper.math.core.model.Player;
+import com.mathhelper.math.core.service.PlayerService;
 
 @RunWith(MockitoJUnitRunner.class)
 public class HomeControllerTest {
@@ -24,13 +29,21 @@ public class HomeControllerTest {
 	@Mock private Player player;
 	private String name;
 	private ModelClass model;
-	
+	@Mock private HttpServletRequest request;
+	@Mock private HttpSession session;
+	@Mock private PlayerService ps;
+	 
 	@Before
 	public void before(){
-		homeController = new HomeController();
+		homeController = new HomeController(ps);
 		name = "Arne";	
 		model = new ModelClass();
-		homeController.gameSite(name, model);
+		doNothing().when(ps).addPlayer(Matchers.anyObject());
+		when(request.getSession()).thenReturn(session);
+		doNothing().when(session).setAttribute(Matchers.anyString(), Matchers.anyObject());
+
+		homeController.gameSite(name, model, request);
+		
 	}
 
 	@Test

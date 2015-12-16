@@ -1,5 +1,8 @@
 package com.mathhelper.math.core.model;
 
+import java.util.List;
+import java.util.Map;
+
 public class Player {
 
 	private int id;
@@ -28,4 +31,6 @@ public class Player {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+
 }

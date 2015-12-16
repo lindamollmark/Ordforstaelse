@@ -14,6 +14,8 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import com.mathhelper.math.persistence.CountDAO;
+import com.mathhelper.math.persistence.CountDAOImpl;
 import com.mathhelper.math.persistence.PlayerDAO;
 import com.mathhelper.math.persistence.PlayerDAOImpl;
 
@@ -50,6 +52,10 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
     @Bean
     public PlayerDAO getPlayerDAO() {
         return new PlayerDAOImpl(getDataSource());
+    }
+    @Bean
+    public CountDAO getCountDAO() {
+        return new CountDAOImpl(getDataSource());
     }
     @Bean
     public DataSource getTestDataSource() {

@@ -9,6 +9,8 @@
 
 </head>
 <body>
+<input type="button"  onclick="location.href='/math/'" value="Börja om" >
+<input type="button"  onclick="location.href='/math/gameSite/'" value="Välj ny tabell" >
 	<aside id="left">
 		<div>
 			<img src="../resources/images/sideNumbers.jpg">
@@ -20,7 +22,7 @@
 		</div>
 	</aside>
 	<section>
-		<h1>Nu ska vi räkna matte</h1>
+		<h1>Nu ska vi räkna matte ${playerName}</h1>
 		<br>
 		<br>
 		

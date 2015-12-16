@@ -3,12 +3,20 @@ package com.mathhelper.math.core.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
+import com.mathhelper.math.persistence.CountDAO;
+
 public class Count {
 	
 	private int chartNumber;
 	private int numberOfTrials;
 	private int numberOfCorrectAnswers;
 	private Player player;
+	@Autowired
+	@Qualifier("getCountDAO")
+	private CountDAO countDAO;
 	
 	private int randomNumber;
 	private List<Integer> correctAnswerCount;
@@ -48,6 +56,7 @@ public class Count {
 
 	public String numberToCount() {
 		if (numberToCountList.isEmpty()) {
+			countDAO.addCountResult(player.getId(), chartNumber, numberOfTrials, numberOfCorrectAnswers);
 			return player.getName() + " du är klar med hela " + chartNumber +" :ans tabell! Bra jobbat!";
 		}
 		randomNumber();
