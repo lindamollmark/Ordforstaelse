@@ -29,7 +29,9 @@ public class Result {
 		this.noOfCorrectAnswers = noOfCorrectAnswers;
 	}
 	public int getScore() {
-		score = (noOfCorrectAnswers/noOfTrials)*100;
+		double correct = noOfCorrectAnswers;
+		double trials = noOfTrials;
+		score = (int)((correct/trials) * 100) ;
 		return score;
 	}
 	

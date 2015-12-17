@@ -54,8 +54,8 @@ table{
 	width: 20%;
 	float: right;
 	margin-right: 33,5%;
-	border: 10px green;
+	border: 5px solid #1de240;
 }
-th {
-    text-align: left;
+th, td{
+    text-align: center;
 }

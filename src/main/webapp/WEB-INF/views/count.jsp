@@ -20,11 +20,7 @@
 		</div>
 	</aside>
 	<nav>
-		<div class="returnButtons">
-			<input type="button" onclick="location.href='/math/'" value="Börja om"> 
-				<input type="button" onclick="location.href='/math/gameSite/'" value="Välj ny tabell">
-		</div>
-
+		
 		<table>
 			
 				<tr>
@@ -41,6 +37,11 @@
 				</tr>
 			</c:forEach>
 		</table>
+		<div class="returnButtons">
+			<input type="button" onclick="location.href='/math/'" value="Börja om"> 
+				<input type="button" onclick="location.href='/math/gameSite/'" value="Välj ny tabell">
+		</div>
+		
 	</nav>
 
 	<section>
