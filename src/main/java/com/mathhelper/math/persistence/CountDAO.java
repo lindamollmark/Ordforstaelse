@@ -9,5 +9,4 @@ public interface CountDAO {
 
 	public void addCountResult(int id, int chartNumber, int numberOfTrials, int numberOfCorrectAnswers);
 	public List<Result> getCount(Player player);
-
 }

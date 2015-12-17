@@ -41,14 +41,10 @@ public class PlayerDAOImpl implements PlayerDAO {
 	            	Player player = new Player(rs.getString("name"));
 	            	player.setId(rs.getInt("id"));
 	                return player;
-	            }
-	 
+	            }	 
 	            return null;
 	        }
-
-	 
 	    });
-	
 		return thePlayer;
 	}
 
@@ -57,5 +53,4 @@ public class PlayerDAOImpl implements PlayerDAO {
 		String sql = "UPDATE player SET name=? where id=?";
 		jdbcTemplate.update(sql, player.getName(), player.getId());
 	}
-
 }

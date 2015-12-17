@@ -1,7 +1,6 @@
 package com.mathhelper.math.core.model;
 
 import java.util.List;
-import java.util.Map;
 
 public class Player {
 
@@ -40,6 +39,4 @@ public class Player {
 	public void setResultList(List<Result> result) {
 		resultlist = result;		
 	}
-
-
 }

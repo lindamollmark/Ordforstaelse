@@ -34,7 +34,5 @@ public class Result {
 		score = (int)((correct/trials) * 100) ;
 		return score;
 	}
-	
-	
 
 }

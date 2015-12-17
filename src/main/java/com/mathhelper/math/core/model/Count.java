@@ -14,26 +14,24 @@ public class Count {
 	private int chartNumber;
 	private int numberOfTrials;
 	private int numberOfCorrectAnswers;
-	private Player player;
+	private Player player;	
+	private int randomNumber;
+	private List<Integer> correctAnswerCount;
+	private List<Integer> numberToCountList;
 	
 	@Autowired
 	@Qualifier("getCountDAO")
 	private CountDAO countDAO;
 	
-	private int randomNumber;
-	private List<Integer> correctAnswerCount;
-	private List<Integer> numberToCountList;
-	
-	
-	
 	public Count() {
 		super();
 	}
 	
-
 	public void init(int chartNumber, Player player) {
 		this.chartNumber = chartNumber;
 		this.player = player;
+		numberOfTrials = 0;
+		numberOfCorrectAnswers = 0;
 		correctAnswerCount = new ArrayList<>();
 		numberToCountList = new ArrayList<>();
 		for (int i = 0; i < 11; i++) {
@@ -98,5 +96,5 @@ public class Count {
 
 	public int getNumberOfTrials() {
 		return numberOfTrials;
-	}		
+	}
 }

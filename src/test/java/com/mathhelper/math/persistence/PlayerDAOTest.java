@@ -44,7 +44,6 @@ public class PlayerDAOTest {
 	
 	@Test
 	public void shouldUpdatePlayer() throws Exception {
-
 		playerDAO.addPlayer(player);
 		Player returned = getPlayer(player.getName());
 		returned.setName("Fredag");
@@ -54,6 +53,5 @@ public class PlayerDAOTest {
 		
 		assertEquals(returned.getId(), updated.getId());
 		assertEquals(returned.getName(), updated.getName());
-		
 	}
 }

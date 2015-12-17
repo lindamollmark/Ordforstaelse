@@ -1,17 +1,12 @@
 package com.mathhelper.math.core;
 
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import static org.junit.Assert.assertEquals;
 
 import org.easymock.EasyMock;
-import org.easymock.IAnswer;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.api.easymock.PowerMock;
-import org.powermock.api.easymock.annotation.Mock;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
@@ -27,8 +22,7 @@ public class CountTest_numberToCount {
 	private int chartToCount = 3;
 	private double randomNumber = 0.5;
 	private int randomNumberToCount = (int)(randomNumber*11);
-	private Player player = new Player("Sigrid");
-	
+	private Player player = new Player("Sigrid");	
 	
 	@Before
 	public void before(){
@@ -38,7 +32,6 @@ public class CountTest_numberToCount {
 		EasyMock.expect((Math.random()*11)).andReturn(randomNumber).anyTimes();
 		PowerMock.replay(Math.class);
 		countClass.numberToCount();
-		
 	}
 	
 	@Test

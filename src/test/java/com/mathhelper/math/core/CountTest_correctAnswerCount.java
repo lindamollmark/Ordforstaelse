@@ -24,7 +24,6 @@ public class CountTest_correctAnswerCount {
 	private int chartToCount = 3;
 	private double randomNumber = 0.5;
 	private int randomNumberToCount = (int)(randomNumber*11);
-	private String numberToCount;
 	private Player player = new Player("Roger");
 	
 	@Before
@@ -35,7 +34,8 @@ public class CountTest_correctAnswerCount {
 		PowerMock.mockStatic(Math.class);
 		EasyMock.expect((Math.random()*11)).andReturn(randomNumber).anyTimes();
 		PowerMock.replay(Math.class);
-		numberToCount = countClass.numberToCount();
+
+		countClass.numberToCount();
 	}
 	@Test
 	public void shouldCalculateNumberOfCorrectAnswer_whenNeverAnswerd() throws Exception {

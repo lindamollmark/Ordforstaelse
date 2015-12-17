@@ -1,7 +1,7 @@
 package com.mathhelper.math.core;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -32,7 +32,6 @@ public class PlayerServiceTest {
 
 	@Test
 	public void shouldAddPlayer() throws Exception {
-
 		ps.addPlayer(player);
 
 		verify(playDAO).addPlayer(player);
@@ -50,7 +49,6 @@ public class PlayerServiceTest {
 	public void shouldUpdatePlayerIfPlayerExcist() throws Exception {
 		when(playDAO.getPlayer(player.getName())).thenReturn(player);
 		ps.addPlayer(player);
-
 		
 		verify(playDAO).updatePlayer(player);
 	}

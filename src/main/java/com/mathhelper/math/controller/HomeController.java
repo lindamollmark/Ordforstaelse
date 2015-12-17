@@ -15,32 +15,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.mathhelper.math.core.model.Player;
 import com.mathhelper.math.core.service.PlayerService;
 
-/**
- * Handles requests for the application home page.
- */
 @Controller
 @Scope("session")
 @SessionAttributes("player")
 public class HomeController {
 
+
+	private Player player;
+	@Autowired private PlayerService service;
+
 	public HomeController() {
 		super();
 	}
-	private Player player;
-
-	@Autowired
-	private PlayerService service;
-	
 
 	public HomeController(PlayerService ps) {
 		service = ps;
 	}
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	public String home(Locale locale, Model model, SessionStatus session) {
+		session.setComplete();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 		LocalDateTime ldate = LocalDateTime.now();	
 		String date = ldate.format(formatter);
@@ -53,18 +52,17 @@ public class HomeController {
 	public String gameSite(Model model) {
 		@SuppressWarnings("rawtypes")
 		Map modelMap = model.asMap();
-		 Player player = (Player) modelMap.get("player");
-		 model.addAttribute("playerName", player.getName());
+		@SuppressWarnings("unused")
+		Player player = (Player) modelMap.get("player");
 		return "gameSite";
 	}
 	@RequestMapping(value = "/gameSite", method = RequestMethod.POST)
 	public String gameSite(@RequestParam(value="name") String name, Model model, HttpServletRequest request) {
 		player = new Player(name);
-		request.getSession().setAttribute("player", player); 
-		
+		model.addAttribute("playerName", player.getName());
 		Player created = service.addPlayer(player);
 		model.addAttribute(created);
-		model.addAttribute("playerName", name);
+		request.getSession().setAttribute("player", created);
 		return "gameSite";
 	}
 

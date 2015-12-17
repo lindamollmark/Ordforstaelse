@@ -39,7 +39,6 @@ public class PlayerService {
 		}
 		else{
 			dao.updatePlayer(excisting);
-			getResultList(excisting);
 		}
 		return excisting;
 	}

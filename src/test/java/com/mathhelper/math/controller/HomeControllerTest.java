@@ -43,7 +43,6 @@ public class HomeControllerTest {
 		doNothing().doThrow(new RuntimeException()).when(session).setAttribute(Matchers.anyString(), Matchers.anyObject());
 
 		homeController.gameSite(name, model, request);
-		
 	}
 
 	@Test
@@ -99,7 +98,6 @@ public class HomeControllerTest {
 		}
 		public String getAttribute(String attributeName){
 			Object attribute = modelAttribute.get(attributeName);
-
 			return attribute.toString();
 		}
 	}

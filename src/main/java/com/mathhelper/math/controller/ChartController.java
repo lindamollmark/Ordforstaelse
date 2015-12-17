@@ -1,10 +1,7 @@
 package com.mathhelper.math.controller;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.mathhelper.math.core.model.Count;
 import com.mathhelper.math.core.model.Player;
@@ -25,35 +21,35 @@ import com.mathhelper.math.core.service.PlayerService;
 @SessionAttributes("player")
 public class ChartController {
 
-	@Autowired
-	private Count count;
-	@Autowired
-	private PlayerService ps;
+	@Autowired private Count count;
+	@Autowired private PlayerService ps;
 
 	@RequestMapping(value="/count", method=RequestMethod.POST)
 	public String chooseNumber(@RequestParam(required=true, value="tableNumber") String tabelNumber,  Model model){
 		int chartNumber = Integer.parseInt(tabelNumber);
-		@SuppressWarnings("rawtypes")
-		Map modelMap = model.asMap();
-		Player player = (Player) modelMap.get("player");
-
+		Player player = getPlayerFromModel(model);
 		count.init(chartNumber, player);
 		String toCount = count.numberToCount();
-		model.addAttribute("playerName", player.getName());
 		model.addAttribute("toCount", toCount);
-		
-		List<Result> resultList = ps.getResultList(player);
-		model.addAttribute("resultlist",resultList);
+
+		model.addAttribute("playerName", player.getName());
+		getResultlist(model, player);
 		model.addAttribute(count);
 		return "count";
 	}
-	@RequestMapping(value="/submit", method=RequestMethod.POST)
-	public String correctCount(@RequestParam(value="answer") String answer, Model model) {
+	private void getResultlist(Model model, Player player) {
+		List<Result> resultList = ps.getResultList(player);
+		model.addAttribute("resultlist",resultList);
+	}
+	private Player getPlayerFromModel(Model model) {
 		@SuppressWarnings("rawtypes")
 		Map modelMap = model.asMap();
 		Player player = (Player) modelMap.get("player");
-		model.addAttribute("playerName", player.getName());
-
+		return player;
+	}
+	@RequestMapping(value="/submit", method=RequestMethod.POST)
+	public String correctCount(@RequestParam(value="answer") String answer, Model model) {
+		Player player = getPlayerFromModel(model);
 		model.addAttribute(count);
 
 		if(answer.equals("")){
@@ -70,9 +66,7 @@ public class ChartController {
 			else{
 				model.addAttribute("resultAnswer", "Fel");
 			}
-
-			model.addAttribute("noOfTrials", count.getNumberOfTrials());
-			model.addAttribute("noOfCorrectAnswers", count.getNumberOfCorrectAnswers());
+			getResultlist(model, player);
 			String toCount = count.numberToCount();
 			model.addAttribute("toCount", toCount);
 			return "count";

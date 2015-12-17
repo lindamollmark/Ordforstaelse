@@ -45,7 +45,7 @@
 	</nav>
 
 	<section>
-		<h1>Nu ska vi räkna matte ${playerName}</h1>
+		<h1>Nu ska vi räkna matte ${player.name}</h1>
 		<br> <br>
 
 		<div id="toCount">
@@ -57,9 +57,9 @@
 					type="submit" value="Rätta"> <br>
 				<h2>${resultAnswer}</h2>
 				Antal försök:
-				<h2>${noOfTrials}</h2>
+				<h2>${count.numberOfTrials}</h2>
 				Antal rätt:
-				<h2>${noOfCorrectAnswers}</h2>
+				<h2>${count.numberOfCorrectAnswers}</h2>
 			</form>
 		</div>
 
