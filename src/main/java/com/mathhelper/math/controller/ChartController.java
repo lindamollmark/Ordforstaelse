@@ -2,9 +2,9 @@ package com.mathhelper.math.controller;
 
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,16 +18,17 @@ import com.mathhelper.math.core.model.Player;
 @SessionAttributes("player")
 public class ChartController {
 
+	@Autowired
 	private Count count;
 	
 	@RequestMapping(value="/count", method=RequestMethod.POST)
 	public String chooseNumber(@RequestParam(required=true, value="tableNumber") String tabelNumber,  Model model){
 		int chartNumber = Integer.parseInt(tabelNumber);
-		 Map modelMap = model.asMap();
+		 @SuppressWarnings("rawtypes")
+		Map modelMap = model.asMap();
 		 Player player = (Player) modelMap.get("player");
-		System.out.println(player.getName());
 		
-		count = new Count(chartNumber, player);
+		count.init(chartNumber, player);
 		String toCount = count.numberToCount();
 		model.addAttribute("playerName", player.getName());
 		model.addAttribute("toCount", toCount);

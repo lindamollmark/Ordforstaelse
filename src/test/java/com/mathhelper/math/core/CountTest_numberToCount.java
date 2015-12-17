@@ -23,7 +23,7 @@ import com.mathhelper.math.core.model.Player;
 @PrepareForTest ({Count.class})
 public class CountTest_numberToCount {
 
-	private Count countClass;
+	private Count countClass = new Count();
 	private int chartToCount = 3;
 	private double randomNumber = 0.5;
 	private int randomNumberToCount = (int)(randomNumber*11);
@@ -32,7 +32,7 @@ public class CountTest_numberToCount {
 	
 	@Before
 	public void before(){
-		countClass = new Count(chartToCount, player);
+		countClass.init(chartToCount, player);
 		// Mocking Math.random()
 		PowerMock.mockStatic(Math.class);
 		EasyMock.expect((Math.random()*11)).andReturn(randomNumber).anyTimes();

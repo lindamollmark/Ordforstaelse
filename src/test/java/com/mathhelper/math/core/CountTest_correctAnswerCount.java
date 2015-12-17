@@ -29,7 +29,8 @@ public class CountTest_correctAnswerCount {
 	
 	@Before
 	public void before(){
-		countClass = new Count(chartToCount, player);
+		countClass = new Count();
+		countClass.init(chartToCount, player);
 		// Mocking Math.random()
 		PowerMock.mockStatic(Math.class);
 		EasyMock.expect((Math.random()*11)).andReturn(randomNumber).anyTimes();

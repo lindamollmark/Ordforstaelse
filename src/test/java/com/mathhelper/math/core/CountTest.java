@@ -25,7 +25,8 @@ public class CountTest {
 
 	@Before
 	public void before(){
-		countClass = new Count(chartToCount, new Player("Tom"));
+		countClass = new Count();
+		countClass.init(chartToCount, new Player("Tom"));
 		// Mocking Math.random()
 		PowerMock.mockStatic(Math.class);
 		EasyMock.expect((Math.random()*11)).andReturn(randomNumber).anyTimes();

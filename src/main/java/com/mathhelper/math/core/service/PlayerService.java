@@ -17,21 +17,22 @@ public class PlayerService {
 	
 	public PlayerService() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public PlayerService(PlayerDAO playDAO) {
 		dao = playDAO;
 	}
 
-	public void addPlayer(Player player) {
+	public Player addPlayer(Player player) {
 		Player excisting = getPlayer(player);
 		if(excisting == null){
-		dao.addPlayer(player);	
+		dao.addPlayer(player);
+		excisting =  getPlayer(player);
 		}
 		else{
 			dao.updatePlayer(excisting);
 		}
+		return excisting;
 	}
 
 	private Player getPlayer(Player player) {

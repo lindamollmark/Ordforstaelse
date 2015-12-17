@@ -8,7 +8,7 @@
 <title>Spelsida</title>
 </head>
 <body>
-	<aside id="left">
+<aside id="left">
 		<div>
 			<img src="../resources/images/sideNumbers.jpg">
 		</div>
@@ -18,12 +18,16 @@
 			<img src="../resources/images/sideNumbers.jpg">
 		</div>
 	</aside>
+<nav>
+<input class="returnButtons" type="button"  onclick="location.href='/math/'" value="Börja om" >
+	</nav>
+	
 	<section>
 		<h1>Viken mattetabell vill du öva på ${playerName}?</h1>
 		<div>
 			<form action="count" method="post" >
 				<INPUT TYPE="image" SRC="../resources/images/ett.jpg" id="numbers"
-					ALT="SUBMIT!" name="tableNumber" value="1 ${playerName}"> 
+					ALT="SUBMIT!" name="tableNumber" value="1"> 
 				<INPUT TYPE="image" SRC="../resources/images/2.jpg" id="numbers"
 					ALT="SUBMIT!" name="tableNumber" value="2"> 
 				<INPUT TYPE="image" SRC="../resources/images/3.jpg" id="numbers"

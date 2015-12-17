@@ -5,15 +5,17 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import com.mathhelper.math.persistence.CountDAO;
-
+@Service
 public class Count {
 	
 	private int chartNumber;
 	private int numberOfTrials;
 	private int numberOfCorrectAnswers;
 	private Player player;
+	
 	@Autowired
 	@Qualifier("getCountDAO")
 	private CountDAO countDAO;
@@ -22,7 +24,14 @@ public class Count {
 	private List<Integer> correctAnswerCount;
 	private List<Integer> numberToCountList;
 	
-	public Count(int chartNumber, Player player) {
+	
+	
+	public Count() {
+		super();
+	}
+	
+
+	public void init(int chartNumber, Player player) {
 		this.chartNumber = chartNumber;
 		this.player = player;
 		correctAnswerCount = new ArrayList<>();
@@ -55,7 +64,7 @@ public class Count {
 	}
 
 	public String numberToCount() {
-		if (numberToCountList.isEmpty()) {
+		if (numberToCountList.isEmpty()) {			
 			countDAO.addCountResult(player.getId(), chartNumber, numberOfTrials, numberOfCorrectAnswers);
 			return player.getName() + " du är klar med hela " + chartNumber +" :ans tabell! Bra jobbat!";
 		}

@@ -38,9 +38,9 @@ public class HomeControllerTest {
 		homeController = new HomeController(ps);
 		name = "Arne";	
 		model = new ModelClass();
-		doNothing().when(ps).addPlayer(Matchers.anyObject());
+		when(ps.addPlayer(Matchers.anyObject())).thenReturn(player);
 		when(request.getSession()).thenReturn(session);
-		doNothing().when(session).setAttribute(Matchers.anyString(), Matchers.anyObject());
+		doNothing().doThrow(new RuntimeException()).when(session).setAttribute(Matchers.anyString(), Matchers.anyObject());
 
 		homeController.gameSite(name, model, request);
 		

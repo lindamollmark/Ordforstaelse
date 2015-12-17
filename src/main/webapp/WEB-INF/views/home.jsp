@@ -19,6 +19,14 @@
 			<img  src="resources/images/sideNumbers.jpg">
 		</div> 
 	</aside>
+	
+<header></header>
+<nav>
+		<div class="returnButtons">
+			
+		</div>
+	</nav>
+
 	<section>
 		<h1>Välkommen till mattesidan!</h1>
 		<form action="gameSite/" method="post">
@@ -31,7 +39,7 @@
 		<br>
 		<br>
 		<br>
-	<P>The time on the server is ${serverTime}.</P>
+	<P>Du kom till oss idag ${serverTime}.</P>
 	</section>
 </body>
 </html>

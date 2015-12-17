@@ -1,18 +1,24 @@
 body, html {
-	margin-top: 100px;
-	height: 100%;
+	margin-top: 20px;
+	height: 50%;
 }
 
 body {
 	margin-bottom: 300px;
 }
-
+header{
+ 	margin-top: 60px;
+ 	height: 30%
+}
 section {
     width:800px;
     float:none;
     margin-left: 20%;
     padding:10px; 
     text-align: center;
+}
+nav{
+	margin: 50px;
 }
 
 h1 {
@@ -23,6 +29,9 @@ h1 {
 	width: 150px;
 	float: left;
 	margin-left: 3.5%;
+}
+aside{
+	margin-top: 10%;
 }
 
 #right {
@@ -36,4 +45,17 @@ h1 {
 	width: 60px;
 	height: 60px;
 	text-align: center;
+}
+.returnButtons{
+	margin-left: 12%;
+	color: red;
+}
+table{
+	width: 20%;
+	float: right;
+	margin-right: 33,5%;
+	border: 10px green;
+}
+th {
+    text-align: left;
 }
