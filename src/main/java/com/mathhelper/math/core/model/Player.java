@@ -7,6 +7,7 @@ public class Player {
 
 	private int id;
 	private String name;
+	private List<Result> resultlist;
 	
 	public Player() {
 		super();
@@ -30,6 +31,14 @@ public class Player {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public List<Result> getResult() {
+		return resultlist;
+	}
+
+	public void setResultList(List<Result> result) {
+		resultlist = result;		
 	}
 
 

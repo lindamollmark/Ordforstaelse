@@ -21,31 +21,26 @@
 	</aside>
 	<nav>
 		<div class="returnButtons">
-			<input  type="button" onclick="location.href='/math/'" value="Börja om"> 
+			<input type="button" onclick="location.href='/math/'" value="Börja om"> 
 				<input type="button" onclick="location.href='/math/gameSite/'" value="Välj ny tabell">
 		</div>
+
 		<table>
-		<tr>
-    <th>Firstname</th>
-    <th>Lastname</th> 
-    <th>Points</th>
-  </tr>
-  <tr>
-    <td>${playerName}</td>
-    <td>Smith</td>		
-    <td>50</td>
-  </tr>
-  <tr>
-    <td>${playerName}</td>
-    <td>Jackson</td>		
-    <td>94</td>
-  </tr>
-  <tr>
-    <td>${playerName}</td>
-    <td>Doe</td>		
-    <td>80</td>
-  </tr>
-</table>
+			
+				<tr>
+				<th><h4>Resultat</h1></h4>
+				</tr>
+				<tr>
+					<th>Tabell</th>
+					<th>Poäng</th>
+				</tr>
+				<c:forEach var="r" items="${resultlist}">
+				<tr>
+					<td>${r.chart}</td>
+					<td>${r.score}</td>
+				</tr>
+			</c:forEach>
+		</table>
 	</nav>
 
 	<section>
