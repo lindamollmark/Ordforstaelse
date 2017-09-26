@@ -1,4 +1,4 @@
-package com.mathhelper.math.controller;
+package com.synonym.ord.controller;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -7,6 +7,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.synonym.ord.core.model.Player;
+import com.synonym.ord.core.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -16,9 +18,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-
-import com.mathhelper.math.core.model.Player;
-import com.mathhelper.math.core.service.PlayerService;
 
 @Controller
 @Scope("session")
