@@ -11,12 +11,12 @@
 <body>
 	<aside id="left">
 		<div>
-			<img src="../resources/images/sideNumbers.jpg">
+			<img src="../resources/images/sideWords.jpg">
 		</div>
 	</aside>
 	<aside id="right">
 		<div>
-			<img src="../resources/images/sideNumbers.jpg">
+			<img src="../resources/images/sideWords.jpg">
 		</div>
 	</aside>
 	<nav>
@@ -28,7 +28,7 @@
 				</tr>
 				<tr>
 					<th>Tabell</th>
-					<th>Poäng</th>
+					<th>PoÃ¤ng</th>
 				</tr>
 				<c:forEach var="r" items="${resultlist}">
 				<tr>
@@ -38,27 +38,28 @@
 			</c:forEach>
 		</table>
 		<div class="returnButtons">
-			<input type="button" onclick="location.href='/math/'" value="Börja om"> 
-				<input type="button" onclick="location.href='/math/gameSite/'" value="Välj ny tabell">
+			<input type="button" onclick="location.href='/'" value="BÃ¶rja om">
+				<input type="button" onclick="location.href='/gameSite/'" value="VÃ¤lj ny bokstav">
 		</div>
 		
 	</nav>
 
 	<section>
-		<h1>Nu ska vi räkna matte ${player.name}</h1>
+		<h1>Nu ska vi lÃ¤ra oss ord ${player.name}</h1>
 		<br> <br>
 
-		<div id="toCount">
-			<h1>${toCount}</h1>
+		<div id="words">
+			<h1>${words.get(0).word}</h1>
 		</div>
 		<div>
 			<form action="submit" method="post" id="submitAnswer">
-				<input type="number" name="answer" id="answerSubmit"> <input
-					type="submit" value="Rätta"> <br>
+				<input type="hidden" name="id" value="${words.get(0).id}">
+				<textarea name="answer" id="answerSubmit" cols="30" rows="10"></textarea>
+				<input type="submit" value="RÃ¤tta"> <br>
 				<h2>${resultAnswer}</h2>
-				Antal försök:
+				Antal fï¿½rsï¿½k:
 				<h2>${count.numberOfTrials}</h2>
-				Antal rätt:
+				Antal rï¿½tt:
 				<h2>${count.numberOfCorrectAnswers}</h2>
 			</form>
 		</div>

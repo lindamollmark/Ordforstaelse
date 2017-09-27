@@ -10,32 +10,24 @@
 <body>
 <aside id="left">
 		<div>
-			<img src="../resources/images/sideNumbers.jpg">
+			<img src="../resources/images/sideWords.jpg">
 		</div>
 	</aside>
 	<aside id="right">
 		<div>
-			<img src="../resources/images/sideNumbers.jpg">
+			<img src="../resources/images/sideWords.jpg">
 		</div>
 	</aside>
 <nav>
-<input class="returnButtons" type="button"  onclick="location.href='/math/'" value="Börja om" >
+<input class="returnButtons" type="button"  onclick="location.href='/'" value="BÃ¶rja om" >
 	</nav>
 	
 	<section>
-		<h1>Viken mattetabell vill du öva på ${player.name}?</h1>
+		<h1>Vilken bokstav vill du Ã¶va pÃ¥ ${player.name}?</h1>
 		<div>
 			<form action="count" method="post" >
-				<INPUT TYPE="image" SRC="../resources/images/ett.jpg" id="numbers"
-					ALT="SUBMIT!" name="tableNumber" value="1"> 
-				<INPUT TYPE="image" SRC="../resources/images/2.jpg" id="numbers"
-					ALT="SUBMIT!" name="tableNumber" value="2"> 
-				<INPUT TYPE="image" SRC="../resources/images/3.jpg" id="numbers"
-					ALT="SUBMIT!" name="tableNumber" value="3"> 
-				<INPUT TYPE="image" SRC="../resources/images/4.jpg" id="numbers"
-					ALT="SUBMIT!" name="tableNumber" value="4"> 
-				<INPUT TYPE="image" SRC="../resources/images/5.jpg" id="numbers"
-					ALT="SUBMIT!" name="tableNumber" value="5"> 
+				<INPUT TYPE="image" SRC="../resources/images/h.jpg" id="letter"
+					ALT="SUBMIT!" name="letter" value="h">
 			</form>
 		</div>
 	</section>

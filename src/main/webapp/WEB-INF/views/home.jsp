@@ -11,12 +11,12 @@
 <body>
 <aside id="left">
 		<div>
-			<img  src="resources/images/sideNumbers.jpg">
+			<img  src="resources/images/sideWords.jpg">
 		</div>
 	</aside>
 	<aside id="right">
 		 <div>
-			<img  src="resources/images/sideNumbers.jpg">
+			<img  src="resources/images/sideWords.jpg">
 		</div> 
 	</aside>
 	
@@ -28,13 +28,13 @@
 	</nav>
 
 	<section>
-		<h1>V‰lkommen till mattesidan!</h1>
+		<h1>V√§lkommen till Ordf√∂rst√•else!</h1>
 		<form action="gameSite/" method="post">
-		<label>Vem ska r‰kna? </label>
+		<label>Vem ska testa sin ordkunskap? </label>
 		<input type="text" name="name">
 		<br>
 		<br>
-		<input type="submit" value="R‰kna matte"/>
+		<input type="submit" value="Testa mig!"/>
 		</form>
 		<br>
 		<br>

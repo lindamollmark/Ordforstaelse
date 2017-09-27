@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.mathhelper.math">
+	<logger name="com.synonym.ord">
 		<level value="info" />
 	</logger>
 	
