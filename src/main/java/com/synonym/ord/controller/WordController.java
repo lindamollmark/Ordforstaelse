@@ -1,6 +1,7 @@
 package com.synonym.ord.controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -61,6 +62,8 @@ public class WordController {
         String answer = request.getParameter("answer").replace("\n", "").replace("\r", "");
         String id = request.getParameter("id");
 
+        Word wordFromId = wordService.getWordFromId(id);
+        String correctAnswer = wordFromId.getMeaning();
         Object words = request.getSession().getAttribute("words");
         List<Word> wordList = (ArrayList) words;
         model.addAttribute(wordService);
@@ -71,8 +74,7 @@ public class WordController {
             request.getSession().setAttribute("words", wordList);
             return "count";
         } else {
-            Word wordFromId = wordService.getWordFromId(id);
-            String correctAnswer = wordFromId.getMeaning();
+
             Integer index = null;
             if (correctAnswer.equalsIgnoreCase(answer)) {
                 for (int i = 0; i < wordList.size(); i++) {
@@ -82,16 +84,16 @@ public class WordController {
                     }
                 }
                 if (index != null){
-                    wordList.remove(index);
+                    wordList.remove(index.intValue());
                 }
                 model.addAttribute("words", wordList);
                 model.addAttribute("resultAnswer", "Rätt");
                 request.getSession().setAttribute("words", wordList);
                 return "count";
             }
-
+            Collections.reverse(wordList);
             model.addAttribute("words", wordList);
-            model.addAttribute("resultAnswer", "Fel");
+            model.addAttribute("resultAnswer", "Fel ordet " + wordFromId.getWord() + " betyder " + correctAnswer);
             request.getSession().setAttribute("words", wordList);
 
             return "count";
