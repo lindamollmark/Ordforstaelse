@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
 <html>
@@ -26,8 +27,11 @@
 		<h1>Vilken bokstav vill du öva på ${player.name}?</h1>
 		<div>
 			<form action="count" method="post" >
+				<INPUT TYPE="image" SRC="../resources/images/b.jpg" id="letter"
+					   ALT="SUBMIT!" name="letter" value="b">
 				<INPUT TYPE="image" SRC="../resources/images/h.jpg" id="letter"
 					ALT="SUBMIT!" name="letter" value="h">
+
 			</form>
 		</div>
 	</section>

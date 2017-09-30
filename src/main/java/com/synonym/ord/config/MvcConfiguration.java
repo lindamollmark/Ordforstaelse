@@ -57,17 +57,17 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
 		return new WordDAOImpl(getDataSource());
 	}
 
-	@Bean
-	public DataSource getTestDataSource() {
-		DataSource bean = new EmbeddedDatabaseBuilder()
-				.setType(EmbeddedDatabaseType.H2)
-				.addScript("classpath:schema.sql")
-				.build();         
-		return bean;
-	}
-
-	@Bean
-	public PlayerDAO getTestPlayerDAO() {
-		return new PlayerDAOImpl(getTestDataSource());
-	}
+//	@Bean
+//	public DataSource getTestDataSource() {
+//		DataSource bean = new EmbeddedDatabaseBuilder()
+//				.setType(EmbeddedDatabaseType.H2)
+//				.addScript("classpath:schema.sql")
+//				.build();
+//		return bean;
+//	}
+//
+//	@Bean
+//	public PlayerDAO getTestPlayerDAO() {
+//		return new PlayerDAOImpl(getTestDataSource());
+//	}
 }

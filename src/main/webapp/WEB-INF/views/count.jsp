@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
 <html>
@@ -20,11 +21,11 @@
 		</div>
 	</aside>
 	<nav>
-		
+
 		<table>
-			
+
 				<tr>
-				<th><h4>Resultat</h1></h4>
+				<th><h4>Resultat</h4>
 				</tr>
 				<tr>
 					<th>Tabell</th>
@@ -41,7 +42,7 @@
 			<input type="button" onclick="location.href='/'" value="Börja om">
 				<input type="button" onclick="location.href='/gameSite/'" value="Välj ny bokstav">
 		</div>
-		
+
 	</nav>
 
 	<section>
@@ -57,9 +58,9 @@
 				<textarea name="answer" id="answerSubmit" cols="30" rows="10"></textarea>
 				<input type="submit" value="Rätta"> <br>
 				<h2>${resultAnswer}</h2>
-				Antal f�rs�k:
+				Antal försök:
 				<h2>${count.numberOfTrials}</h2>
-				Antal r�tt:
+				Antal rätt:
 				<h2>${count.numberOfCorrectAnswers}</h2>
 			</form>
 		</div>

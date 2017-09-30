@@ -2,32 +2,40 @@ package com.synonym.ord.core.model;
 
 public class Result {
 	
-	private int chart;
+	private char letter;
 	private int noOfTrials;
 	private int noOfCorrectAnswers;
 	private int score;
-	
-	public Result(int chart) {
-		this.chart = chart;
+
+
+	public char getLetter() {
+		return letter;
 	}
-	public int getChart() {
-		return chart;
+
+	public void setLetter(char letter) {
+		this.letter = letter;
 	}
-	public void setChart(int chart) {
-		this.chart = chart;
-	}
+
 	public int getNoOfTrials() {
 		return noOfTrials;
 	}
+
 	public void setNoOfTrials(int noOfTrials) {
 		this.noOfTrials = noOfTrials;
 	}
+
 	public int getNoOfCorrectAnswers() {
 		return noOfCorrectAnswers;
 	}
+
 	public void setNoOfCorrectAnswers(int noOfCorrectAnswers) {
 		this.noOfCorrectAnswers = noOfCorrectAnswers;
 	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+
 	public int getScore() {
 		double correct = noOfCorrectAnswers;
 		double trials = noOfTrials;

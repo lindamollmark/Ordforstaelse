@@ -1,5 +1,6 @@
 package com.synonym.ord.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -29,7 +30,7 @@ public class WordController {
     @Autowired
     private WordService wordService;
     @Autowired
-    private PlayerService ps;
+    private PlayerService playerService;
 
     @RequestMapping(value = "/count", method = RequestMethod.POST)
     public String chooseLetter(@RequestParam(required = true, value = "letter") String letter, Model model, HttpServletRequest request) {
@@ -43,7 +44,7 @@ public class WordController {
     }
 
     private void getResultlist(Model model, Player player) {
-        List<Result> resultList = ps.getResultList(player);
+        List<Result> resultList = playerService.getResultList(player);
         model.addAttribute("resultlist", resultList);
     }
 
@@ -56,9 +57,9 @@ public class WordController {
 
 
     @RequestMapping(value = "/submit", method = RequestMethod.POST)
-    public String compareAnswer(HttpServletRequest request, Model model) {
-        Player player = getPlayerFromModel(model);
-
+    public String compareAnswer(HttpServletRequest request, Model model) throws UnsupportedEncodingException {
+//        Player player = getPlayerFromModel(model);
+        request.setCharacterEncoding("UTF-8");
         String answer = request.getParameter("answer").replace("\n", "").replace("\r", "");
         String id = request.getParameter("id");
 
@@ -66,31 +67,28 @@ public class WordController {
         String correctAnswer = wordFromId.getMeaning();
         Object words = request.getSession().getAttribute("words");
         List<Word> wordList = (ArrayList) words;
-        model.addAttribute(wordService);
+//        model.addAttribute(wordService);
 
-        if (answer.equals("")) {
+        Integer index = null;
+        if (correctAnswer.equalsIgnoreCase(answer)) {
+            for (int i = 0; i < wordList.size(); i++) {
+                if (wordList.get(i).getId() == Integer.parseInt(id)) {
+                    index = i;
+                    break;
+                }
+            }
+            if (index != null) {
+                wordList.remove(index.intValue());
+            }
+            if (wordList.isEmpty()) {
+                return "goal";
+            }
+
             model.addAttribute("words", wordList);
-            model.addAttribute("resultAnswer", "Fel");
+            model.addAttribute("resultAnswer", "Rätt");
             request.getSession().setAttribute("words", wordList);
             return "count";
         } else {
-
-            Integer index = null;
-            if (correctAnswer.equalsIgnoreCase(answer)) {
-                for (int i = 0; i < wordList.size(); i++) {
-                    if (wordList.get(i).getId() == Integer.parseInt(id)) {
-                        index = i;
-                        break;
-                    }
-                }
-                if (index != null){
-                    wordList.remove(index.intValue());
-                }
-                model.addAttribute("words", wordList);
-                model.addAttribute("resultAnswer", "Rätt");
-                request.getSession().setAttribute("words", wordList);
-                return "count";
-            }
             Collections.reverse(wordList);
             model.addAttribute("words", wordList);
             model.addAttribute("resultAnswer", "Fel ordet " + wordFromId.getWord() + " betyder " + correctAnswer);
@@ -99,32 +97,6 @@ public class WordController {
             return "count";
         }
     }
-
-//    @RequestMapping(value = "/submit", method = RequestMethod.POST)
-//    public String compareAnswer(@RequestParam(value = "answer") String answer, Model model) {
-//        Player player = getPlayerFromModel(model);
-//        model.addAttribute(wordService);
-//
-////		if(answer.equals("")){
-////			String toCount = words.numberToCount();
-////			model.addAttribute("toCount", toCount);
-////			return "count";
-////		}
-////
-////		else {
-////			Boolean result = words.correctAnswer(Integer.parseInt(answer));
-////			if(result==true){
-////				model.addAttribute("resultAnswer", "R�tt");
-////			}
-////			else{
-////				model.addAttribute("resultAnswer", "Fel");
-////			}
-////			getResultlist(model, player);
-////			String toCount = words.numberToCount();
-////			model.addAttribute("toCount", toCount);
-//        return "count";
-//
-//    }
 }
 
 
