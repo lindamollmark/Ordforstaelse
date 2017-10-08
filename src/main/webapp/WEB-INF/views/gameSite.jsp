@@ -33,6 +33,8 @@
 					   ALT="SUBMIT!" name="letter" value="g">
 				<INPUT TYPE="image" SRC="../resources/images/h.jpg" id="letter"
 					ALT="SUBMIT!" name="letter" value="h">
+				<INPUT TYPE="image" SRC="../resources/images/mix.png" id="letter"
+					   ALT="SUBMIT!" name="letter" value="mix">
 
 			</form>
 		</div>
