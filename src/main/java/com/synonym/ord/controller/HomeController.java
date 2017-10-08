@@ -25,44 +25,47 @@ import org.springframework.web.bind.support.SessionStatus;
 public class HomeController {
 
 
-	private Player player;
-	@Autowired private PlayerService service;
+    private Player player;
+    @Autowired
+    private PlayerService service;
 
-	public HomeController() {
-		super();
-	}
+    public HomeController() {
+        super();
+    }
 
-	public HomeController(PlayerService ps) {
-		service = ps;
-	}
+    public HomeController(PlayerService ps) {
+        service = ps;
+    }
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model, SessionStatus session) {
-		session.setComplete();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-		LocalDateTime ldate = LocalDateTime.now();	
-		String date = ldate.format(formatter);
+        session.setComplete();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        LocalDateTime ldate = LocalDateTime.now();
+        String date = ldate.format(formatter);
 
-		model.addAttribute("serverTime", date);
+        model.addAttribute("serverTime", date);
 
-		return "home";
-	}
-	@RequestMapping(value = "/gameSite", method = RequestMethod.GET)
-	public String gameSite(Model model) {
-		@SuppressWarnings("rawtypes")
-		Map modelMap = model.asMap();
-		@SuppressWarnings("unused")
-		Player player = (Player) modelMap.get("player");
-		return "gameSite";
-	}
-	@RequestMapping(value = "/gameSite", method = RequestMethod.POST)
-	public String gameSite(@RequestParam(value="name") String name, Model model, HttpServletRequest request) {
-		player = new Player(name);
-		model.addAttribute("playerName", player.getName());
-		Player created = service.addPlayer(player);
-		model.addAttribute(created);
-		request.getSession().setAttribute("player", created);
-		return "gameSite";
-	}
+        return "home";
+    }
+
+    @RequestMapping(value = "/gameSite", method = RequestMethod.GET)
+    public String gameSite(Model model) {
+        @SuppressWarnings("rawtypes")
+        Map modelMap = model.asMap();
+        @SuppressWarnings("unused")
+        Player player = (Player) modelMap.get("player");
+        return "gameSite";
+    }
+
+    @RequestMapping(value = "/gameSite", method = RequestMethod.POST)
+    public String gameSite(@RequestParam(value = "name") String name, Model model, HttpServletRequest request) {
+        player = new Player(name);
+        model.addAttribute("playerName", player.getName());
+        Player created = service.addPlayer(player);
+        model.addAttribute(created);
+        request.getSession().setAttribute("player", created);
+        return "gameSite";
+    }
 
 }

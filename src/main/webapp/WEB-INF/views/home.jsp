@@ -32,7 +32,7 @@
 		<h1>Välkommen till Ordförståelse!</h1>
 		<form action="gameSite/" method="post">
 		<label>Vem ska testa sin ordkunskap? </label>
-		<input type="text" name="name">
+		<input type="text" name="name" required>
 		<br>
 		<br>
 		<input type="submit" value="Testa mig!"/>
