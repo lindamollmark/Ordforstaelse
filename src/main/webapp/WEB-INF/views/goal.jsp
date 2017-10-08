@@ -33,7 +33,7 @@
     <br> <br>
 
 
-    <table>
+    <table style="margin-right: 50%">
 
         <tr>
             <th><h4>Resultat</h4>
