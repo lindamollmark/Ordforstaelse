@@ -95,7 +95,9 @@ public class WordController {
         }
         resultService.addTrial(player, wordFromId.getLetter(), isAnswer);
         model.addAttribute(resultService);
-        Collections.reverse(wordList);
+        if (!isAnswer) {
+            Collections.shuffle(wordList);
+        }
         model.addAttribute("words", wordList);
         model.addAttribute("resultAnswer", isAnswer ? "Rätt!" : "Fel ordet " + wordFromId.getWord() +
                 " betyder " + wordFromId.getMeaning());
