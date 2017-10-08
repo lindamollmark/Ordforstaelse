@@ -6,7 +6,7 @@ public class Word {
     private String word;
     private String meaning;
     private Character letter;
-
+    private int trial;
 
     public int getId() {
         return id;
@@ -38,5 +38,17 @@ public class Word {
 
     public void setLetter(Character letter) {
         this.letter = letter;
+    }
+
+    public int getTrial() {
+        return trial;
+    }
+
+    public void setTrial(int trial) {
+        this.trial = trial;
+    }
+
+    public void addTrial() {
+       trial++;
     }
 }

@@ -37,6 +37,7 @@ public class WordDAOImpl implements WordDAO {
 			word.setWord(row.get("word").toString());
 			word.setMeaning(row.get("meaning").toString());
 			word.setLetter((Character)row.get("letter").toString().charAt(0));
+			word.setTrial(Integer.parseInt(row.get("trial").toString()));
 			resultList.add(word);
 		}
 		return resultList;
@@ -53,7 +54,31 @@ public class WordDAOImpl implements WordDAO {
 			word.setWord(row.get("word").toString());
 			word.setMeaning(row.get("meaning").toString());
 			word.setLetter((Character)row.get("letter").toString().charAt(0));
+			word.setTrial(Integer.parseInt(row.get("trial").toString()));
 		}
 		return word;
+	}
+
+	@Override
+	public void saveWord(Word word) {
+		String sql = "UPDATE words SET trial =" + word.getTrial() + " WHERE id = '" + word.getId() + "'";
+		final int update = jdbcTemplate.update(sql);
+	}
+
+	@Override
+	public List<Word> getRandomWords() {
+		String sql ="SELECT * FROM words ORDER BY trial LIMIT 15";
+		List<Word> resultList = new ArrayList<>();
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList(sql);
+		for (Map<String, Object> row : rows) {
+			Word word = new Word();
+			word.setId(Integer.parseInt(row.get("id").toString()));
+			word.setWord(row.get("word").toString());
+			word.setMeaning(row.get("meaning").toString());
+			word.setLetter((Character)row.get("letter").toString().charAt(0));
+			word.setTrial(Integer.parseInt(row.get("trial").toString()));
+			resultList.add(word);
+		}
+		return resultList;
 	}
 }

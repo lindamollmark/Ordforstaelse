@@ -22,14 +22,25 @@ public class WordService {
     }
 
     public List<Word> getWordsFromLetter(String letter) {
-//		if (letter.equals("mix")){
-//			wordDAO.getRandomWords();
-//		}
-        List<Word> words = wordDAO.getWordsFromLetter(letter);
+        List<Word> words = new ArrayList<>();
+        if (letter.equals("mix")){
+			words = wordDAO.getRandomWords();
+		}
+		else {
+            words = wordDAO.getWordsFromLetter(letter);
+        }
         return words;
     }
 
     public Word getWordFromId(String id) {
         return wordDAO.getWordFromId(Integer.parseInt(id));
+
     }
+
+    public void addWordTrial(Word word) {
+        word.addTrial();
+        wordDAO.saveWord(word);
+
+    }
+
 }

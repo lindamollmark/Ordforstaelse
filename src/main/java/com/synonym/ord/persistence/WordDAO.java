@@ -11,4 +11,8 @@ public interface WordDAO {
 	public List<Word> getWordsFromLetter(String letter);
 
 	public Word getWordFromId(int id);
+
+    public void saveWord(Word word);
+
+	public List<Word> getRandomWords();
 }

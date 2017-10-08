@@ -97,6 +97,7 @@ public class WordController {
         resultService.addTrial(player, wordFromId.getLetter(), isAnswer);
         model.addAttribute(resultService);
         if (!isAnswer) {
+            wordService.addWordTrial(wordFromId);
             Collections.shuffle(wordList);
         }
         model.addAttribute("words", wordList);
