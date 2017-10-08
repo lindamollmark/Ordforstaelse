@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.synonym.ord.core.model.Word;
+import com.synonym.ord.core.service.ResultService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,15 +32,18 @@ public class WordController {
     private WordService wordService;
     @Autowired
     private PlayerService playerService;
+    @Autowired
+    private ResultService resultService;
 
     @RequestMapping(value = "/count", method = RequestMethod.POST)
     public String chooseLetter(@RequestParam(required = true, value = "letter") String letter, Model model, HttpServletRequest request) {
         List<Word> words = wordService.getWordsFromLetter(letter);
         Player player = getPlayerFromModel(model);
         model.addAttribute("words", words);
-
+        resultService.init(player, letter.charAt(0));
         model.addAttribute("playerName", player.getName());
         request.getSession().setAttribute("words", words);
+        model.addAttribute(resultService);
         return "count";
     }
 
@@ -58,19 +62,19 @@ public class WordController {
 
     @RequestMapping(value = "/submit", method = RequestMethod.POST)
     public String compareAnswer(HttpServletRequest request, Model model) throws UnsupportedEncodingException {
-//        Player player = getPlayerFromModel(model);
+        Player player = getPlayerFromModel(model);
+
         request.setCharacterEncoding("UTF-8");
         String answer = request.getParameter("answer").replace("\n", "").replace("\r", "");
         String id = request.getParameter("id");
-
         Word wordFromId = wordService.getWordFromId(id);
-        String correctAnswer = wordFromId.getMeaning();
         Object words = request.getSession().getAttribute("words");
         List<Word> wordList = (ArrayList) words;
-//        model.addAttribute(wordService);
 
+        Boolean isAnswer = false;
         Integer index = null;
-        if (correctAnswer.equalsIgnoreCase(answer)) {
+        if (wordFromId.getMeaning().equalsIgnoreCase(answer)) {
+            isAnswer = true;
             for (int i = 0; i < wordList.size(); i++) {
                 if (wordList.get(i).getId() == Integer.parseInt(id)) {
                     index = i;
@@ -81,21 +85,25 @@ public class WordController {
                 wordList.remove(index.intValue());
             }
             if (wordList.isEmpty()) {
+                resultService.addTrial(player, wordFromId.getLetter(), isAnswer);
+                resultService.saveFinalResult();
+                getResultlist(model, player);
                 return "goal";
             }
 
-            model.addAttribute("words", wordList);
-            model.addAttribute("resultAnswer", "Rätt");
-            request.getSession().setAttribute("words", wordList);
-            return "count";
-        } else {
-            Collections.reverse(wordList);
-            model.addAttribute("words", wordList);
-            model.addAttribute("resultAnswer", "Fel ordet " + wordFromId.getWord() + " betyder " + correctAnswer);
-            request.getSession().setAttribute("words", wordList);
 
-            return "count";
         }
+        resultService.addTrial(player, wordFromId.getLetter(), isAnswer);
+        model.addAttribute(resultService);
+        Collections.reverse(wordList);
+        model.addAttribute("words", wordList);
+        model.addAttribute("resultAnswer", isAnswer ? "Rätt!" : "Fel ordet " + wordFromId.getWord() +
+                " betyder " + wordFromId.getMeaning());
+        request.getSession().setAttribute("words", wordList);
+        getResultlist(model, player);
+
+        return "count";
+
     }
 }
 

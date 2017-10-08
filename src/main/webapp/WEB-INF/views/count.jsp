@@ -33,7 +33,7 @@
 				</tr>
 				<c:forEach var="r" items="${resultlist}">
 				<tr>
-					<td>${r.chart}</td>
+					<td>${r.letter}</td>
 					<td>${r.score}</td>
 				</tr>
 			</c:forEach>
@@ -59,9 +59,11 @@
 				<input type="submit" value="Rätta"> <br>
 				<h2>${resultAnswer}</h2>
 				Antal försök:
-				<h2>${count.numberOfTrials}</h2>
+
+				<h2>${resultService.numberOfTrials}</h2>
 				Antal rätt:
-				<h2>${count.numberOfCorrectAnswers}</h2>
+				<h2>${resultService.numberOfCorrectAnswers}</h2>
+
 			</form>
 		</div>
 

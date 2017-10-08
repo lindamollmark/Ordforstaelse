@@ -2,16 +2,12 @@ package com.synonym.ord.config;
 
 import javax.sql.DataSource;
 
-import com.synonym.ord.persistence.WordDAOImpl;
-import com.synonym.ord.persistence.PlayerDAO;
-import com.synonym.ord.persistence.PlayerDAOImpl;
-import com.synonym.ord.persistence.WordDAO;
+import com.synonym.ord.persistence.ResultDAO;
+import com.synonym.ord.persistence.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -55,6 +51,11 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
 	@Bean
 	public WordDAO getWordDAO() {
 		return new WordDAOImpl(getDataSource());
+	}
+
+	@Bean
+	public ResultDAO getResultDAO() {
+		return new ResultDAOImpl(getDataSource());
 	}
 
 //	@Bean

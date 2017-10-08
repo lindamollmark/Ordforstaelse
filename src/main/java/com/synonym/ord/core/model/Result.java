@@ -1,18 +1,20 @@
 package com.synonym.ord.core.model;
 
+import java.util.Date;
+
 public class Result {
 	
-	private char letter;
+	private Character letter;
 	private int noOfTrials;
 	private int noOfCorrectAnswers;
 	private int score;
 
 
-	public char getLetter() {
+	public Character getLetter() {
 		return letter;
 	}
 
-	public void setLetter(char letter) {
+	public void setLetter(Character letter) {
 		this.letter = letter;
 	}
 

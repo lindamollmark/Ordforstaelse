@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
     <link rel="stylesheet" href="../resources/css/normalize.css">
@@ -19,6 +20,19 @@
 </aside>
 <nav>
 
+
+    <div class="returnButtons">
+        <input type="button" onclick="location.href='/'" value="Börja om">
+        <input type="button" onclick="location.href='/gameSite/'" value="Välj ny bokstav">
+    </div>
+
+</nav>
+
+<section>
+    <h1>GRATTIS ${player.name.toUpperCase()} DU KLARADE DET!!!</h1>
+    <br> <br>
+
+
     <table>
 
         <tr>
@@ -30,23 +44,11 @@
         </tr>
         <c:forEach var="r" items="${resultlist}">
             <tr>
-                <td>${r.chart}</td>
+                <td>${r.letter}</td>
                 <td>${r.score}</td>
             </tr>
         </c:forEach>
     </table>
-    <div class="returnButtons">
-        <input type="button" onclick="location.href='/'" value="Börja om">
-        <input type="button" onclick="location.href='/gameSite/'" value="Välj ny bokstav">
-    </div>
-
-</nav>
-
-<section>
-    <h1>GRATTIS ${player.name} DU KLARADE DET!!!</h1>
-    <br> <br>
-
-
 </section>
 </body>
 </html>

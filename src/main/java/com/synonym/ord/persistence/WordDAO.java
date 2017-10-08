@@ -8,9 +8,6 @@ import com.synonym.ord.core.model.Word;
 
 public interface WordDAO {
 
-	public void addCountResult(int id, int chartNumber, int numberOfTrials, int numberOfCorrectAnswers);
-	public List<Result> getCount(Player player);
-
 	public List<Word> getWordsFromLetter(String letter);
 
 	public Word getWordFromId(int id);

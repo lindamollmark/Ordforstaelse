@@ -25,25 +25,6 @@ public class WordDAOImpl implements WordDAO {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 
-	@Override
-	public void addCountResult(int playerId, int chartNumber, int numberOfTrials, int numberOfCorrectAnswers) {
-		String sql = "INSERT INTO chartscounted (player, chartsCounted, trials, correct) VALUES(?, ?,?,?)";
-		jdbcTemplate.update(sql, playerId, chartNumber, numberOfTrials, numberOfCorrectAnswers);
-	}
-
-	@Override
-	public List<Result> getCount(Player player) {
-		String sql ="SELECT * FROM chartscounted WHERE player = '" + player.getId() + "'";
-		List<Result> resultList = new ArrayList<>();
-		List<Map<String, Object>> rows = jdbcTemplate.queryForList(sql);
-		for (Map<String, Object> row : rows) {
-			Result result = new Result((Integer)row.get("chartsCounted"));
-        	result.setNoOfTrials((Integer)row.get("trials"));
-        	result.setNoOfCorrectAnswers((Integer)row.get("correct"));
-        	resultList.add(result);
-		}		
-		return resultList;
-		}
 
 	@Override
 	public List<Word> getWordsFromLetter(String letter) {
@@ -55,6 +36,7 @@ public class WordDAOImpl implements WordDAO {
 			word.setId(Integer.parseInt(row.get("id").toString()));
 			word.setWord(row.get("word").toString());
 			word.setMeaning(row.get("meaning").toString());
+			word.setLetter((Character)row.get("letter").toString().charAt(0));
 			resultList.add(word);
 		}
 		return resultList;
@@ -70,6 +52,7 @@ public class WordDAOImpl implements WordDAO {
 			word.setId(Integer.parseInt(row.get("id").toString()));
 			word.setWord(row.get("word").toString());
 			word.setMeaning(row.get("meaning").toString());
+			word.setLetter((Character)row.get("letter").toString().charAt(0));
 		}
 		return word;
 	}

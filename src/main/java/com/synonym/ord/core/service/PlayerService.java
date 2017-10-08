@@ -5,6 +5,7 @@ import java.util.List;
 import com.synonym.ord.core.model.Player;
 import com.synonym.ord.persistence.PlayerDAO;
 import com.synonym.ord.core.model.Result;
+import com.synonym.ord.persistence.ResultDAO;
 import com.synonym.ord.persistence.WordDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -20,6 +21,10 @@ public class PlayerService {
 	@Autowired
 	@Qualifier("getWordDAO")
 	private WordDAO wordDAO;
+
+	@Autowired
+	@Qualifier("getResultDAO")
+	private ResultDAO resultDAO;
 
 	
 	public PlayerService() {
@@ -48,7 +53,7 @@ public class PlayerService {
 	}
 
 	public List<Result> getResultList(Player player) {
-		List<Result> resultList = wordDAO.getCount(player);
+		List<Result> resultList = resultDAO.getCount(player);
 		player.setResultList(resultList);
 		return resultList;
 	}

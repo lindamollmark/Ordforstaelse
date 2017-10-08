@@ -5,6 +5,7 @@ public class Word {
     private int id;
     private String word;
     private String meaning;
+    private Character letter;
 
 
     public int getId() {
@@ -29,5 +30,13 @@ public class Word {
 
     public void setMeaning(String meaning) {
         this.meaning = meaning;
+    }
+
+    public Character getLetter() {
+        return letter;
+    }
+
+    public void setLetter(Character letter) {
+        this.letter = letter;
     }
 }

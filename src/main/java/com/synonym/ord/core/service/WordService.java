@@ -44,17 +44,6 @@ public class WordService {
 		}
 	}
 
-	public List<Integer> getCorrectAnswerCount() {
-		return correctAnswerCount;
-	}
-
-	public int getNumberOfCorrectAnswers() {
-		return numberOfCorrectAnswers;
-	}
-
-	public int getNumberOfTrials() {
-		return numberOfTrials;
-	}
 
 	public List<Word> getWordsFromLetter(String letter) {
 		List<Word> words = wordDAO.getWordsFromLetter(letter);
