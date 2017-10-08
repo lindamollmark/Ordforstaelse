@@ -44,6 +44,7 @@ public class WordController {
         model.addAttribute("playerName", player.getName());
         request.getSession().setAttribute("words", words);
         model.addAttribute(resultService);
+        getResultlist(model, player);
         return "count";
     }
 
