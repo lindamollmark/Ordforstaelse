@@ -29,6 +29,8 @@
 			<form action="count" method="post" >
 				<INPUT TYPE="image" SRC="../resources/images/b.jpg" id="letter"
 					   ALT="SUBMIT!" name="letter" value="b">
+				<INPUT TYPE="image" SRC="../resources/images/e.jpg" id="letter"
+					   ALT="SUBMIT!" name="letter" value="e">
 				<INPUT TYPE="image" SRC="../resources/images/g.jpg" id="letter"
 					   ALT="SUBMIT!" name="letter" value="g">
 				<INPUT TYPE="image" SRC="../resources/images/h.jpg" id="letter"

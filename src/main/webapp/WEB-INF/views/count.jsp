@@ -55,7 +55,7 @@
 		<div>
 			<form action="submit" method="post" id="submitAnswer">
 				<input type="hidden" name="id" value="${words.get(0).id}">
-				<textarea name="answer" id="answerSubmit" cols="30" rows="10"></textarea>
+				<textarea name="answer" id="answerSubmit" cols="30" rows="2"></textarea>
 				<input type="submit" value="Rätta"> <br>
 				<h2>${resultAnswer}</h2>
 				Antal försök:
