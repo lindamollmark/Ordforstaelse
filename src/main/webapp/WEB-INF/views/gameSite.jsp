@@ -27,16 +27,22 @@
 		<h1>Vilken bokstav vill du öva på ${player.name}?</h1>
 		<div>
 			<form action="count" method="post" >
-				<INPUT TYPE="image" SRC="../resources/images/b.jpg" id="letter"
-					   ALT="SUBMIT!" name="letter" value="b">
-				<INPUT TYPE="image" SRC="../resources/images/e.jpg" id="letter"
-					   ALT="SUBMIT!" name="letter" value="e">
-				<INPUT TYPE="image" SRC="../resources/images/g.jpg" id="letter"
-					   ALT="SUBMIT!" name="letter" value="g">
-				<INPUT TYPE="image" SRC="../resources/images/h.jpg" id="letter"
-					ALT="SUBMIT!" name="letter" value="h">
-				<INPUT TYPE="image" SRC="../resources/images/mix.png" id="letter"
-					   ALT="SUBMIT!" name="letter" value="mix">
+				<button style="border:none" type="submit" name="letter" value="A"><img src="../resources/images/amanda.jpg">
+				</button><form action="count" method="post" >
+				<button style="border:none" type="submit" name="letter" value="J"><img src="../resources/images/joel2.jpg"></button>
+
+			<%--&lt;%&ndash;	<INPUT TYPE="image" SRC="../resources/images/b.jpg" id="letter"--%>
+					   <%--ALT="SUBMIT!" name="letter" value="b"> &ndash;%&gt;--%>
+				<%--<INPUT TYPE="image" SRC="../resources/images/e.jpg" id="letter"--%>
+					   <%--ALT="SUBMIT!" name="letter" value="e">--%>
+				<%--<INPUT TYPE="image" SRC="../resources/images/g.jpg" id="letter"--%>
+					   <%--ALT="SUBMIT!" name="letter" value="g">--%>
+				<%--<INPUT TYPE="image" SRC="../resources/images/h.jpg" id="letter"--%>
+					<%--ALT="SUBMIT!" name="letter" value="h">--%>
+				<%--<INPUT TYPE="image" SRC="../resources/images/a.jpg" id="letter"--%>
+					<%--ALT="SUBMIT!" name="letter" value="a">--%>
+				<%--<INPUT TYPE="image" SRC="../resources/images/mix.png" id="letter"--%>
+					   <%--ALT="SUBMIT!" name="letter" value="mix">--%>
 
 			</form>
 		</div>

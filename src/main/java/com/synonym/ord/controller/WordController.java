@@ -36,7 +36,7 @@ public class WordController {
     private ResultService resultService;
 
     @RequestMapping(value = "/count", method = RequestMethod.POST)
-    public String chooseLetter(@RequestParam(required = true, value = "letter") String letter, Model model, HttpServletRequest request) {
+   public String chooseLetter(@RequestParam(required = true, value = "letter") String letter, Model model, HttpServletRequest request) {
         List<Word> words = wordService.getWordsFromLetter(letter);
         Player player = getPlayerFromModel(model);
         model.addAttribute("words", words);
@@ -102,7 +102,7 @@ public class WordController {
         }
         model.addAttribute("words", wordList);
         model.addAttribute("resultAnswer", isAnswer ? "Rätt!" : "Fel ordet " + wordFromId.getWord() +
-                " betyder " + wordFromId.getMeaning());
+                " betyder " + wordFromId.getMeaning() + ". Du skrev " + answer);
         request.getSession().setAttribute("words", wordList);
         getResultlist(model, player);
 
