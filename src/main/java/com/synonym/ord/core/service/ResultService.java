@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,6 +56,6 @@ public class ResultService {
     }
 
     public void saveFinalResult(){
-        resultDAO.addCountResult(player.getId(), letter, getNumberOfTrials(), getNumberOfCorrectAnswers());
+        resultDAO.addCountResult(player.getId(), letter, LocalDate.now(), getNumberOfTrials(), getNumberOfCorrectAnswers());
     }
 }

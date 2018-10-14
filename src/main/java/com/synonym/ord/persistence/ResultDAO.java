@@ -3,10 +3,12 @@ package com.synonym.ord.persistence;
 import com.synonym.ord.core.model.Player;
 import com.synonym.ord.core.model.Result;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface ResultDAO {
 
-    public void addCountResult(int id, Character letter, int numberOfTrials, int numberOfCorrectAnswers);
-    public List<Result> getCount(Player player);
+    void addCountResult(final int id, final Character letter, final LocalDate date, final int numberOfTrials, final int numberOfCorrectAnswers);
+
+    List<Result> getCount(final Player player);
 }

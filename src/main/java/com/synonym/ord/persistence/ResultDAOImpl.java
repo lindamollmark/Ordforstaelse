@@ -5,6 +5,8 @@ import com.synonym.ord.core.model.Result;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -19,9 +21,9 @@ public class ResultDAOImpl implements ResultDAO {
 
 
     @Override
-    public void addCountResult(int playerId, Character letter, int numberOfTrials, int numberOfCorrectAnswers) {
-        String sql = "INSERT INTO result (player, letter, trials, correct) VALUES(?, ?,?,?)";
-        jdbcTemplate.update(sql, playerId, letter.toString(), numberOfTrials, numberOfCorrectAnswers);
+    public void addCountResult(final int playerId, final Character letter, final LocalDate localDate, final int numberOfTrials, final int numberOfCorrectAnswers) {
+        String sql = "INSERT INTO result (player, letter, date, trials, correct) VALUES(?, ?,?,?, ?)";
+        jdbcTemplate.update(sql, playerId, letter.toString(), Date.valueOf(localDate), numberOfTrials, numberOfCorrectAnswers);
     }
 
     @Override
