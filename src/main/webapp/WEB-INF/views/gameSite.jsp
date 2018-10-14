@@ -30,6 +30,7 @@
 				<button style="border:none" type="submit" name="letter" value="A"><img src="../resources/images/amanda.jpg">
 				</button><form action="count" method="post" >
 				<button style="border:none" type="submit" name="letter" value="J"><img src="../resources/images/joel2.jpg"></button>
+				<button style="border:none" type="submit" name="letter" value="S"><img src="../resources/images/skiing.jpg"></button>
 
 			<%--&lt;%&ndash;	<INPUT TYPE="image" SRC="../resources/images/b.jpg" id="letter"--%>
 					   <%--ALT="SUBMIT!" name="letter" value="b"> &ndash;%&gt;--%>
