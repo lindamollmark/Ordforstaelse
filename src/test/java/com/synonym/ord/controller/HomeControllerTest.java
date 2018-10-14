@@ -64,37 +64,31 @@ public class HomeControllerTest {
 
 		@Override
 		public Model addAttribute(Object attributeValue) {
-			// TODO Auto-generated method stub
 			return null;
 		}
 
 		@Override
 		public Model addAllAttributes(Collection<?> attributeValues) {
-			// TODO Auto-generated method stub
 			return null;
 		}
 
 		@Override
 		public Model addAllAttributes(Map<String, ?> attributes) {
-			// TODO Auto-generated method stub
 			return null;
 		}
 
 		@Override
 		public Model mergeAttributes(Map<String, ?> attributes) {
-			// TODO Auto-generated method stub
 			return null;
 		}
 
 		@Override
 		public boolean containsAttribute(String attributeName) {
-			// TODO Auto-generated method stub
 			return false;
 		}
 
 		@Override
 		public Map<String, Object> asMap() {
-			// TODO Auto-generated method stub
 			return null;
 		}
 		public String getAttribute(String attributeName){
