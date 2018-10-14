@@ -12,7 +12,7 @@ public class Player {
 		super();
 	}
 
-	public Player(String name) {
+	public Player(final String name) {
 		this.name = name;
 	}
 
@@ -20,7 +20,7 @@ public class Player {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(final String name) {
 		this.name = name;
 	}
 
@@ -28,7 +28,7 @@ public class Player {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(final int id) {
 		this.id = id;
 	}
 
@@ -36,7 +36,7 @@ public class Player {
 		return resultlist;
 	}
 
-	public void setResultList(List<Result> result) {
+	public void setResultList(final List<Result> result) {
 		resultlist = result;		
 	}
 }

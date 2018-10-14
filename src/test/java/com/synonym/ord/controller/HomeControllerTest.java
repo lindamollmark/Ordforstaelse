@@ -1,17 +1,7 @@
 package com.synonym.ord.controller;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.when;
-
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import com.synonym.ord.controller.HomeController;
+import com.synonym.ord.core.model.Player;
+import com.synonym.ord.core.service.PlayerService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,13 +10,19 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.ui.Model;
 
-import com.synonym.ord.core.model.Player;
-import com.synonym.ord.core.service.PlayerService;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class HomeControllerTest {
 
-	private HomeController homeController;
 	@Mock private Player player;
 	private String name;
 	private ModelClass model;
@@ -36,8 +32,8 @@ public class HomeControllerTest {
 	 
 	@Before
 	public void before(){
-		homeController = new HomeController(ps);
-		name = "Arne";	
+        final HomeController homeController = new HomeController(ps);
+        name = "Arne";
 		model = new ModelClass();
 		when(ps.addPlayer(Matchers.anyObject())).thenReturn(player);
 		when(request.getSession()).thenReturn(session);
@@ -47,43 +43,43 @@ public class HomeControllerTest {
 	}
 
 	@Test
-	public void shouldSetPlayerNameToAttribute() throws Exception {
+    public void shouldSetPlayerNameToAttribute() {
 
 		assertEquals(name, model.getAttribute("playerName"));
 	}
 
 	private static class ModelClass implements Model{
 
-		Map<String, Object> modelAttribute = new HashMap<>();
+        private Map<String, Object> modelAttribute = new HashMap<>();
 
 		@Override
-		public Model addAttribute(String attributeName, Object attributeValue) {
+        public Model addAttribute(final String attributeName, Object attributeValue) {
 			modelAttribute.put(attributeName, attributeValue);
 			return null;
 		}
 
 		@Override
-		public Model addAttribute(Object attributeValue) {
+        public Model addAttribute(final Object attributeValue) {
 			return null;
 		}
 
 		@Override
-		public Model addAllAttributes(Collection<?> attributeValues) {
+        public Model addAllAttributes(final Collection<?> attributeValues) {
 			return null;
 		}
 
 		@Override
-		public Model addAllAttributes(Map<String, ?> attributes) {
+        public Model addAllAttributes(final Map<String, ?> attributes) {
 			return null;
 		}
 
 		@Override
-		public Model mergeAttributes(Map<String, ?> attributes) {
+        public Model mergeAttributes(final Map<String, ?> attributes) {
 			return null;
 		}
 
 		@Override
-		public boolean containsAttribute(String attributeName) {
+        public boolean containsAttribute(final String attributeName) {
 			return false;
 		}
 
@@ -91,7 +87,8 @@ public class HomeControllerTest {
 		public Map<String, Object> asMap() {
 			return null;
 		}
-		public String getAttribute(String attributeName){
+
+        private String getAttribute(final String attributeName) {
 			Object attribute = modelAttribute.get(attributeName);
 			return attribute.toString();
 		}

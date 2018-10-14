@@ -12,14 +12,10 @@ import java.util.List;
 @Service
 public class ResultService {
 
-    private String word;
-    private String meaning;
     private Character letter;
     private int numberOfTrials;
     private int numberOfCorrectAnswers;
     private Player player;
-    private List<Integer> correctAnswerCount;
-    private List<Integer> numberToCountList;
 
     @Autowired
     @Qualifier("getResultDAO")
@@ -29,21 +25,17 @@ public class ResultService {
         super();
     }
 
-    public void init(Player player, Character letter) {
+    public void init(final Player player, final Character letter) {
         this.letter = letter;
         this.player = player;
         numberOfTrials = 0;
         numberOfCorrectAnswers = 0;
-        correctAnswerCount = new ArrayList<>();
-        numberToCountList = new ArrayList<>();
+        final List<Integer> correctAnswerCount = new ArrayList<>();
+        final List<Integer> numberToCountList = new ArrayList<>();
         for (int i = 0; i < 11; i++) {
             correctAnswerCount.add(0);
             numberToCountList.add(i);
         }
-    }
-
-    public List<Integer> getCorrectAnswerCount() {
-        return correctAnswerCount;
     }
 
     public int getNumberOfCorrectAnswers() {
@@ -54,7 +46,7 @@ public class ResultService {
         return numberOfTrials;
     }
 
-    public void addTrial(Player player, Character letter, boolean correctAnswer) {
+    public void addTrial(final Player player, final boolean correctAnswer) {
         numberOfTrials++;
         if (correctAnswer) {
             numberOfCorrectAnswers++;
