@@ -24,13 +24,12 @@
 	</nav>
 	
 	<section>
-		<h1>Vilken bokstav vill du öva på ${player.name}?</h1>
+        <h1>Vilka glosor vill du öva på ${player.name}?</h1>
 		<div>
-			<form action="count" method="post" >
-				<button style="border:none" type="submit" name="letter" value="A"><img src="../resources/images/amanda.jpg">
-				</button><form action="count" method="post" >
-				<button style="border:none" type="submit" name="letter" value="J"><img src="../resources/images/joel2.jpg"></button>
-				<button style="border:none" type="submit" name="letter" value="S"><img src="../resources/images/skiing.jpg"></button>
+            <c:forEach var="alternative" items="${alternatives}">
+            <form action="count" method="post">
+                <button style="border:none" type="submit" name="letter" value="${alternative}">${alternative}</button>
+                </c:forEach>
 
 			<%--&lt;%&ndash;	<INPUT TYPE="image" SRC="../resources/images/b.jpg" id="letter"--%>
 					   <%--ALT="SUBMIT!" name="letter" value="b"> &ndash;%&gt;--%>

@@ -1,14 +1,13 @@
 package com.synonym.ord.core.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.synonym.ord.core.model.Player;
 import com.synonym.ord.core.model.Word;
 import com.synonym.ord.persistence.WordDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class WordService {
@@ -41,6 +40,10 @@ public class WordService {
         word.addTrial();
         wordDAO.saveWord(word);
 
+    }
+
+    public List<String> getAlternatives() {
+        return wordDAO.getAlternatives();
     }
 
 }

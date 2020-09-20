@@ -1,16 +1,13 @@
 package com.synonym.ord.persistence;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import javax.sql.DataSource;
-
-import com.synonym.ord.core.model.Player;
-import com.synonym.ord.core.model.Result;
 import com.synonym.ord.core.model.Word;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+
+import javax.sql.DataSource;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 @Repository
 public class WordDAOImpl implements WordDAO {
@@ -81,4 +78,15 @@ public class WordDAOImpl implements WordDAO {
 		}
 		return resultList;
 	}
+
+    @Override
+    public List<String> getAlternatives() {
+        String sql = "SELECT DISTINCT letter FROM words";
+        List<String> alternatives = new ArrayList<>();
+        final List<Map<String, Object>> list = jdbcTemplate.queryForList(sql);
+        for (Map<String, Object> row : list) {
+            alternatives.add(row.get("letter").toString());
+        }
+        return alternatives;
+    }
 }

@@ -28,11 +28,13 @@
 				<th><h4>Resultat</h4>
 				</tr>
 				<tr>
+					<th>Datum</th>
 					<th>Tabell</th>
 					<th>Poäng</th>
 				</tr>
 				<c:forEach var="r" items="${resultlist}">
 				<tr>
+					<td>${r.resultDate}</td>
 					<td>${r.letter}</td>
 					<td>${r.score}</td>
 				</tr>

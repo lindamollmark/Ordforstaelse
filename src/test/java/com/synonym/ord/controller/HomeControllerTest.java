@@ -2,6 +2,7 @@ package com.synonym.ord.controller;
 
 import com.synonym.ord.core.model.Player;
 import com.synonym.ord.core.service.PlayerService;
+import com.synonym.ord.core.service.WordService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,10 +30,12 @@ public class HomeControllerTest {
 	@Mock private HttpServletRequest request;
 	@Mock private HttpSession session;
 	@Mock private PlayerService ps;
+	@Mock
+	private WordService wordService;
 	 
 	@Before
 	public void before(){
-        final HomeController homeController = new HomeController(ps);
+		final HomeController homeController = new HomeController(ps, wordService);
         name = "Arne";
 		model = new ModelClass();
 		when(ps.addPlayer(Matchers.anyObject())).thenReturn(player);

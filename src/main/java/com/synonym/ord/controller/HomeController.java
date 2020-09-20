@@ -1,14 +1,8 @@
 package com.synonym.ord.controller;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Locale;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
 import com.synonym.ord.core.model.Player;
 import com.synonym.ord.core.service.PlayerService;
+import com.synonym.ord.core.service.WordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -19,6 +13,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
+import java.util.Map;
+
 @Controller
 @Scope("session")
 @SessionAttributes("player")
@@ -28,13 +28,16 @@ public class HomeController {
     private Player player;
     @Autowired
     private PlayerService service;
+    @Autowired
+    private WordService wordService;
 
     public HomeController() {
         super();
     }
 
-    public HomeController(PlayerService ps) {
+    public HomeController(PlayerService ps, WordService wordService) {
         service = ps;
+        this.wordService = wordService;
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -65,6 +68,7 @@ public class HomeController {
         Player created = service.addPlayer(player);
         model.addAttribute(created);
         request.getSession().setAttribute("player", created);
+        model.addAttribute("alternatives", wordService.getAlternatives());
         return "gameSite";
     }
 

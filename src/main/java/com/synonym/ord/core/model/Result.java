@@ -1,6 +1,6 @@
 package com.synonym.ord.core.model;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Result {
 	
@@ -8,13 +8,14 @@ public class Result {
 	private int noOfTrials;
 	private int noOfCorrectAnswers;
 	private int score;
+    private LocalDateTime resultDate;
 
 
 	public Character getLetter() {
 		return letter;
 	}
 
-	public void setLetter(Character letter) {
+    public void setLetter(final Character letter) {
 		this.letter = letter;
 	}
 
@@ -22,7 +23,7 @@ public class Result {
 		return noOfTrials;
 	}
 
-	public void setNoOfTrials(int noOfTrials) {
+    public void setNoOfTrials(final int noOfTrials) {
 		this.noOfTrials = noOfTrials;
 	}
 
@@ -30,11 +31,11 @@ public class Result {
 		return noOfCorrectAnswers;
 	}
 
-	public void setNoOfCorrectAnswers(int noOfCorrectAnswers) {
+    public void setNoOfCorrectAnswers(final int noOfCorrectAnswers) {
 		this.noOfCorrectAnswers = noOfCorrectAnswers;
 	}
 
-	public void setScore(int score) {
+    public void setScore(final int score) {
 		this.score = score;
 	}
 
@@ -45,4 +46,11 @@ public class Result {
 		return score;
 	}
 
+    public LocalDateTime getResultDate() {
+        return resultDate;
+    }
+
+    public void setResultDate(final LocalDateTime resultDate) {
+        this.resultDate = resultDate;
+    }
 }

@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDateTime;
 
 @Service
 public class ResultService {
@@ -31,12 +29,12 @@ public class ResultService {
         this.player = player;
         numberOfTrials = 0;
         numberOfCorrectAnswers = 0;
-        final List<Integer> correctAnswerCount = new ArrayList<>();
-        final List<Integer> numberToCountList = new ArrayList<>();
-        for (int i = 0; i < 11; i++) {
-            correctAnswerCount.add(0);
-            numberToCountList.add(i);
-        }
+//        final List<Integer> correctAnswerCount = new ArrayList<>();
+//        final List<Integer> numberToCountList = new ArrayList<>();
+//        for (int i = 0; i < 11; i++) {
+//            correctAnswerCount.add(0);
+//            numberToCountList.add(i);
+//        }
     }
 
     public int getNumberOfCorrectAnswers() {
@@ -56,6 +54,6 @@ public class ResultService {
     }
 
     public void saveFinalResult(){
-        resultDAO.addCountResult(player.getId(), letter, LocalDate.now(), getNumberOfTrials(), getNumberOfCorrectAnswers());
+        resultDAO.addCountResult(player.getId(), letter, LocalDateTime.now(), getNumberOfTrials(), getNumberOfCorrectAnswers());
     }
 }
